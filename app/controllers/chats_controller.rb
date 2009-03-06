@@ -94,20 +94,13 @@ class ChatsController < ApplicationController
     @message = Message.new(params[:message])
     @chat = @message.chat
     @chat.mark_all_read(session[:user_id])
-    respond_to do |format|
-      if @message.save
-        update_chat_window
-        # format.html { redirect_to(:back) }
-        # format.xml  { render :xml => @message, :status => :created, :location => @message }
-      else
-        # format.html { redirect_to(:back) }
-        # format.xml  { render :xml => @message.errors, :status => :unprocessable_entity }
-      end
+    if @message.save
+      update_chat_window(@chat.id)
     end
   end
   
-  def update_chat_window
-    chat = Chat.find(params[:chat_id])
+  def update_chat_window(chat_id=nil)
+    chat = Chat.find(chat_id.nil? ? params[:chat_id] : chat_id)
     new_messages = chat.get_unread_messages(session[:user_id])
     response = ""
     new_messages.each do |message|

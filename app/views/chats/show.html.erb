@@ -13,7 +13,9 @@
 	<% remote_form_for :message, 
 											@message, 
 											:url => {:controller => "chats", :action => "create_message"}, 
-											:after => "$('message_body').value=''" do |f| %>
+											:after => "$('message_body').value=''",
+											:update => 'chat_table',
+											:position => :bottom do |f| %>
 	  <%= f.error_messages %>
 	  <%= f.hidden_field :sender_id, :value => session[:user_id] %>
 	  <%= f.hidden_field :chat_id, :value => @chat.id %>
@@ -24,7 +26,7 @@
 </div>
 <%= link_to "Back to Chats", chats_path %>
 <%= periodically_call_remote( :url => update_chat_window_path(:chat_id => @chat.id),
-															:frequency => '3', 
+															:frequency => '2', 
 															:update => 'chat_table',
 															:position => :bottom
 															)
