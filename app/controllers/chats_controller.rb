@@ -104,7 +104,7 @@ class ChatsController < ApplicationController
     new_messages = chat.get_unread_messages(session[:user_id])
     response = ""
     new_messages.each do |message|
-      response << "<tr id=\"message_#{message.id}\"><td><b>#{message.sender.login.titleize}:</b></td><td>#{message.body}</td></tr>"
+      response << "<tr id=\"message_#{message.id}\"><td><b>#{message.sender.login.titleize}:</b></td><td>#{message.body}</td></tr><script>new Effect.Highlight('message_#{message.id}')</script>"
     end
     render :text => response
   end  
