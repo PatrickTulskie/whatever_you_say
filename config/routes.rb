@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :messages
-
   map.resources :chats
+  map.update_chat_window '/chats/:chat_id/update_chat_window', :controller => "chats", :action => "update_chat_window"
  
   # Restful Authentication Rewrites
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'

@@ -1,5 +1,5 @@
 <div id="chat_messages">
-	<table>
+	<table id="chat_table">
 		<% @chat.messages.each do |message| %>
 		<tr id="message_<%= message.id %>">
 			<td><b><%= message.sender.login.titleize %>:</b></td>
@@ -10,7 +10,10 @@
 </div>
 <br />
 <div id="message_form">
-	<% form_for(@message) do |f| %>
+	<% remote_form_for :message, 
+											@message, 
+											:url => {:controller => "chats", :action => "create_message"}, 
+											:after => "$('message_body').value=''" do |f| %>
 	  <%= f.error_messages %>
 	  <%= f.hidden_field :sender_id, :value => session[:user_id] %>
 	  <%= f.hidden_field :chat_id, :value => @chat.id %>
@@ -20,3 +23,9 @@
 	<% end %>
 </div>
 <%= link_to "Back to Chats", chats_path %>
+<%= periodically_call_remote( :url => update_chat_window_path(:chat_id => @chat.id),
+															:frequency => '3', 
+															:update => 'chat_table',
+															:position => :bottom
+															)
+%>

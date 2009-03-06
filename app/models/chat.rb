@@ -17,4 +17,28 @@ class Chat < ActiveRecord::Base
     return chats
   end
   
+  def get_unread_messages(user)
+    u = User.find(user)
+    if self.user_id == u.id
+      read_count = self.user_read_count || 0
+      self.user_read_count = self.messages.length
+    else
+      read_count = self.receiver_read_count || 0
+      self.receiver_read_count = self.messages.length
+    end
+    unread_count = self.messages.length - read_count
+    self.save
+    return self.messages.last(unread_count)
+  end
+  
+  def mark_all_read(user)
+    u = User.find(user)
+    if self.user_id == u.id
+      self.user_read_count = self.messages.length
+    else
+      self.receiver_read_count = self.messages.length
+    end
+  end
+  
+    
 end

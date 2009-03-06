@@ -21,6 +21,7 @@ class ChatsController < ApplicationController
     @user = @chat.user
     @receiver = @chat.receiver
     @message = Message.new
+    @chat.mark_all_read(session[:user_id])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @chat }
@@ -88,4 +89,31 @@ class ChatsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def create_message
+    @message = Message.new(params[:message])
+    @chat = @message.chat
+    @chat.mark_all_read(session[:user_id])
+    respond_to do |format|
+      if @message.save
+        update_chat_window
+        # format.html { redirect_to(:back) }
+        # format.xml  { render :xml => @message, :status => :created, :location => @message }
+      else
+        # format.html { redirect_to(:back) }
+        # format.xml  { render :xml => @message.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+  
+  def update_chat_window
+    chat = Chat.find(params[:chat_id])
+    new_messages = chat.get_unread_messages(session[:user_id])
+    response = ""
+    new_messages.each do |message|
+      response << "<tr id=\"message_#{message.id}\"><td><b>#{message.sender.login.titleize}:</b></td><td>#{message.body}</td></tr>"
+    end
+    render :text => response
+  end  
+  
 end
