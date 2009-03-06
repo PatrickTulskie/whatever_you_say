@@ -1,0 +1,22 @@
+<div id="chat_messages">
+	<table>
+		<% @chat.messages.each do |message| %>
+		<tr id="message_<%= message.id %>">
+			<td><b><%= message.sender.login.titleize %>:</b></td>
+			<td><%= message.body %></td>
+		</tr>
+		<% end %>
+	</table>
+</div>
+<br />
+<div id="message_form">
+	<% form_for(@message) do |f| %>
+	  <%= f.error_messages %>
+	  <%= f.hidden_field :sender_id, :value => session[:user_id] %>
+	  <%= f.hidden_field :chat_id, :value => @chat.id %>
+	  <%= f.hidden_field :source_language_id %>
+		<%= f.text_field :body, :rows => 3, :cols => 50 %>
+	  <%= f.submit "Send" %>
+	<% end %>
+</div>
+<%= link_to "Back to Chats", chats_path %>

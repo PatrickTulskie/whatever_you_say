@@ -1,0 +1,24 @@
+<h1>Listing messages</h1>
+
+<table>
+  <tr>
+    <th>Sender</th>
+    <th>Chat</th>
+    <th>Source language</th>
+  </tr>
+
+<% for message in @messages %>
+  <tr>
+    <td><%=h message.sender_id %></td>
+    <td><%=h message.chat_id %></td>
+    <td><%=h message.source_language_id %></td>
+    <td><%= link_to 'Show', message %></td>
+    <td><%= link_to 'Edit', edit_message_path(message) %></td>
+    <td><%= link_to 'Destroy', message, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New message', new_message_path %>
