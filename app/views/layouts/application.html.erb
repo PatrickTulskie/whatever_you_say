@@ -10,23 +10,25 @@
 		<meta name="resource-type" content="document" />
 		<meta name="MSSmartTagsPreventParsing" content="true" />
 		<%= stylesheet_link_tag 'base' %>
+
 		<%= javascript_include_tag :defaults %>
 	</head>
 	<body>
 		<div id="container">
-			<div id="header">
+			<div id="header" align = right>
 				<ul>
 					<% if logged_in? %>
-					<li><%= link_to 'Logout', logout_path %></li>
+					<%= link_to 'Logout', logout_path %>
 					<% else %>
-					<li><%= link_to 'Login', login_path %></li>
-					<li><%= link_to 'Signup', signup_path %></li>
+					<%= link_to 'Login', login_path %><p>
+					<%= link_to 'Signup', signup_path %>
 					<% end %>
 				</ul>
 			</div>
 			<div id="content">
 				<%= flash_messages %>
 				<%= yield :layout %>
+				
 			</div>
 		</div>
 	</body>

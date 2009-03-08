@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090305230435) do
+ActiveRecord::Schema.define(:version => 20090307011052) do
 
   create_table "chats", :force => true do |t|
     t.integer  "user_id"
@@ -86,6 +86,9 @@ ActiveRecord::Schema.define(:version => 20090305230435) do
     t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "first_name",                :limit => 100
+    t.string   "last_name",                 :limit => 100
+    t.string   "language",                  :limit => 40,  :default => "English"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true

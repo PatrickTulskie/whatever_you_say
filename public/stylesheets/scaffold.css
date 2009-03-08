@@ -1,4 +1,6 @@
-body { background-color: #fff; color: #333; }
+body { 
+	background:url(images/bg.gif) bottom;
+	background-color: #fff; color: #333; }
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -12,9 +14,17 @@ pre {
   font-size: 11px;
 }
 
-a { color: #000; }
+a { 
+
+	color: #0068AD; }
+
 a:visited { color: #666; }
 a:hover { color: #fff; background-color:#000; }
+
+h2 {
+	  color:#244532;
+}
+
 
 .fieldWithErrors {
   padding: 2px;
@@ -50,5 +60,6 @@ a:hover { color: #fff; background-color:#000; }
 #errorExplanation ul li {
   font-size: 12px;
   list-style: square;
+  
 }
 

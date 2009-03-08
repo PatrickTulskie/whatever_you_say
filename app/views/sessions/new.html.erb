@@ -1,22 +1,44 @@
-<%= title "Login", :h2 %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	
+</head>
+<body>
+	
+<center>
+<p>	
+<img style="width: 80px; height: 80px;" alt="WUS" title="WUS" src="/images/WUS_logo.jpg">
+</p>
+<%= title "Whatever You Say v1.0", :h2 %>
+
 <% form_tag session_path do %>
-	<fieldset>
-		<legend>Your Details</legend>
+	<fieldset style="width: 300px;">
+		<legend>Enter Your Login</legend>
+		
 		<ol>
-			<li>
-				<%= label_tag 'login', 'Username' %>
-				<%= text_field_tag 'login', @login %>
-			</li>
-			<li>
-				<%= label_tag 'password' %>
-				<%= password_field_tag 'password', nil %>
-			</li>
-			<li>
+			
+				<%= label_tag 'login', 'Username'%>
+				<%= text_field_tag 'login', @login %><br>
+			
+                	
+				<%= label_tag 'password', 'Password' %>
+				<%= password_field_tag 'password', nil %><p>
+			
+			
 				<%= label_tag 'remember_me', 'Remember me' %>
-				<%= check_box_tag 'remember_me', '1', @remember_me %>
-			</li>
+				<%= check_box_tag 'remember_me', '1', @remember_me %></p><p>
+				
+				</p><div class="buttons">
+					<%= submit_tag 'Login' %>
+					<%= link_to 'Forgotten Password', forgot_password_path %>
+				</div>
+			
 		</ol>
 	</fieldset>
+	
+
+<!-- #comment out OpenID section
+
 	<fieldset>
 		<legend>Login with OpenID</legend>
 		<ol>
@@ -26,8 +48,8 @@
 			</li>
 		</ol>
 	</fieldset>
-	<div class="buttons">
-		<%= submit_tag 'Login' %>
-		<%= link_to 'Forgotten Password', forgot_password_path %>
-	</div>
+-->
+
 <% end -%>
+
+</center></body></html>

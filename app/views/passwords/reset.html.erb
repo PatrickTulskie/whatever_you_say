@@ -1,3 +1,4 @@
+
 <%= title "Reset Your Password", :h2 %>
 <% form_for :user, :url => { :action => 'update_after_forgetting' } do |f| %>
   <%= f.error_messages %>
@@ -20,3 +21,4 @@
     <%= f.submit "Submit" %>
 	</div>
 <% end %>
+

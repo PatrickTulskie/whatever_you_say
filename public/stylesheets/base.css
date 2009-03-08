@@ -1,5 +1,40 @@
+/* === Ada's CSS Style == */
+
+body { 
+	  background:url(images/bg.gif) bottom;
+	  background-color: #fff; color: #333; }
+
+h2 {
+	  color:#244532;
+}
+
+a {
+	text-decoration:none;
+	color:#0068AD
+}
+
+a:hover {
+	text-decoration: underline;
+	color:#fff;
+	background-color:#000
+}
+
+.centerFieldset {
+	text-align:center;
+}
+
+.centerFieldset fieldset{
+	display:inline;
+	padding-left:100px;
+	text-align:left;
+}
+
+
 /* === FLASH MESSAGES === */
 div#flash-notice {
+	
+	text-align: center;
+	color:#B52728;
 	
 }
 

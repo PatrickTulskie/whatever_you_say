@@ -1,28 +1,60 @@
 <% @user.password = @user.password_confirmation = nil %>
+
+<h2><img style="width: 80px; height: 80px;" alt="WUS" title="WUS" src="/images/WUS_logo.jpg" align="middle">  Whatever You Say v1.0</h2>
+
+<div align=right>
+<% if logged_in? %>
+  <%= link_to 'Logout', logout_path %>
+<% end %><p>
+
+</div>
+
+<center>
 <%= title "Signup", :h2 %>
+
+
 <% form_for @user do |f| %>
 	<%= f.error_messages %>
-	<fieldset>
+	<fieldset style="width: 400px;">
 		<legend>Your Details</legend>
 		<ol>
-			<li>
+			
 				<%= f.label :login, 'Username' %>
-				<%= f.text_field :login %>
-			</li>
-			<li>
-				<%= f.label :email %>
-				<%= f.text_field :email %>
-			</li>
-			<li>
+				<%= f.text_field :login %><br>
+			
+			
+				<%= f.label :first_name, 'First Name' %>
+				<%= f.text_field :first_name %><br>
+			
+			
+				<%= f.label :last_name, 'Last Name' %>
+				<%= f.text_field :last_name %><br>
+			
+			
 				<%= f.label :password %>
-				<%= f.password_field :password %>
-			</li>
-			<li>
+				<%= f.password_field :password %><br>
+			
+			
 				<%= f.label :password_confirmation, 'Confirm Password' %>
-				<%= f.password_field :password_confirmation %>
-			</li>
+				<%= f.password_field :password_confirmation %><br>
+			
+			
+				<%= f.label :email %>
+				<%= f.text_field :email %><br>
+			
+			
+				<%= f.label :language, 'Language' %>
+				<%= f.text_field :language %><p>
+				
+				<div class="buttons" align=right>
+					<%= submit_tag 'Sign up' %>
+				</div>
+			
 		</ol>
 	</fieldset>
+	
+<!-- #comment out OpenID section
+	
 	<fieldset>
 		<legend>Signup with OpenID</legend>
 		<ol>
@@ -32,7 +64,7 @@
 			</li>
 		</ol>
 	</fieldset>
-	<div class="buttons">
-		<%= submit_tag 'Sign up' %>
-	</div>
+-->
+
 <% end %>
+</center>

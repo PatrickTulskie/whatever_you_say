@@ -1,17 +1,32 @@
+<center>
+<p>	
+<img style="width: 80px; height: 80px;" alt="WUS" title="WUS" src="/images/WUS_logo.jpg">
+</p>
+<%= title "Whatever You Say v1.0", :h2 %>
+
 <%= title "Forgot Your Password?", :h2 %>
+
 <% form_for @password do |f| %>
   <%= f.error_messages %>
-	<fieldset>
+
+<div class="centerFieldset"
+<fieldset style="width: 350px">
+
 		<legend>Enter Your Email Address</legend>
-		<ol>
-			<li>			
+		<ol>			
+		    
 		    <%= f.label :email %>
-		    <%= f.text_field :email %>
-			</li>
+		    <%= f.text_field :email %><p>
+		
+			<div class="buttons">
+		  	<%= f.submit "Submit" %>
+			</div>
+			
 		</ol>
 	</fieldset>
-	<div class="buttons">
-  	<%= f.submit "Submit" %>
-	</div>
-<% end %>
 
+<% end %>
+</div>
+</fieldset>
+
+</center>
