@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   
   # Relationships
   has_and_belongs_to_many :roles
+  has_one :profile
 
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
@@ -33,6 +34,7 @@ class User < ActiveRecord::Base
     u = find_in_state :first, :active, :conditions => { :login => login } # need to get the salt
     u && u.authenticated?(password) ? u : nil
   end
+  
   
   # Check if a user has a role.
   def has_role?(role)

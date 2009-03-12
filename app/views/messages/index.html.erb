@@ -18,7 +18,9 @@
 
 <% for message in @messages %>
   <tr>
-    <td><%=h message.sender_id %></td>
+
+<!--<td><%=h message.sender_id %></td> -->
+    <td><%= User.find(message.sender_id).login %>
     <td><%=h message.chat_id %></td>
     <td><%=h message.source_language_id %></td>
     <td><%= link_to 'Show', message %></td>

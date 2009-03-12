@@ -6,7 +6,9 @@
   <%= link_to 'Logout', logout_path %>
 <% end %><p>
 
-<%= link_to 'Edit My Profile', edit_user_path(:action => 'edit', :id => session[:user_id]) %>
+<!--<%= link_to 'Edit My Profile', edit_user_path(:action => 'edit', :id => session[:user_id]) %>-->
+<%= link_to 'Edit My Profile', {:controller => 'profiles', :action => 'check_profile', :id => session[:user_id] }%>
+
 </div>
 
 <h1>Currently Active Chats</h1>

@@ -78,7 +78,11 @@ class UsersController < ApplicationController
         end
       end
     else
-      create_new_user(params[:user])
+      @user = create_new_user(params[:user])
+      @user.profile = Profile.new
+      self.current_user = (@user.save!)? @user : render(:action => 'new')
+      redirect_to :action => 'edit', :id => self.current_user.login
+      # flash[:notice] = "Account successfully created."
     end
   end
   
@@ -88,7 +92,7 @@ class UsersController < ApplicationController
     case
     when (!params[:activation_code].blank?) && user && !user.active?
       user.activate!
-      flash[:notice] = "Signup complete! Please sign in to continue."
+      flash[:notice] = "Activation is successful! Please proceed to login."
       redirect_to login_path
     when params[:activation_code].blank?
       flash[:error] = "The activation code was missing.  Please follow the URL from your email."
