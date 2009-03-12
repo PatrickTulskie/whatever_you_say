@@ -1,0 +1,40 @@
+
+<h2><img style="width: 80px; height: 80px;" alt="WUS" title="WUS" src="/images/WUS_logo.jpg" align="middle">  Whatever You Say v1.0</h2>
+
+<div align=right>
+<% if logged_in? %>
+  <%= link_to 'Logout', logout_path %>
+<% end %><p>
+
+</div>
+
+<center>
+<h2>New profile</h2>
+
+<% form_for(@profile) do |f| %>
+  <%= f.error_messages %>
+  <fieldset style="width: 400px;">
+  <ol>
+    <%= f.label :user_id , 'User ID' %>
+    <%= f.text_field :user_id %><br>
+  
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %><br>
+  
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %><br>
+ 
+    <%= f.label :language %>
+    <%= f.text_field :language %><br>
+    <br>
+    <div align="right">
+    <%= f.submit "Create" %>
+    </div>
+  </ol>
+</fieldset>
+<% end %>
+</center>
+
+
+<ol>
+

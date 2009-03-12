@@ -1,0 +1,41 @@
+<h2><img style="width: 80px; height: 80px;" alt="WUS" title="WUS" src="/images/WUS_logo.jpg" align="middle">  Whatever You Say v1.0</h2>
+
+<div align=right>
+<% if logged_in? %>
+  <%= link_to 'Logout', logout_path %>
+<% end %><p>
+
+</div>
+
+<center>
+
+<div class="centerFieldset"
+<fieldset style="width: 400px">
+<p>
+  <b>User ID:</b>
+  <%=h @profile.user_id %>
+</p>
+<p>
+  <b>Username:</b>
+<%= User.find(@profile.user_id).login %>
+</p>
+<p>
+  <b>First name:</b>
+  <%=h @profile.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%=h @profile.last_name %>
+</p>
+
+<p>
+  <b>Language:</b>
+  <%=h @profile.language %>
+</p>
+
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', profiles_path %>
+</div>
+</center>

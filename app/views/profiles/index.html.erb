@@ -1,0 +1,41 @@
+<h2><img style="width: 80px; height: 80px;" alt="WUS" title="WUS" src="/images/WUS_logo.jpg" align="middle">  Whatever You Say v1.0</h2>
+
+<div align=right>
+<% if logged_in? %>
+  <%= link_to 'Logout', logout_path %>
+<% end %><p>
+
+</div>
+
+<center>
+<h2>Listing profiles</h2>
+
+<table>
+  <tr>
+    <th>Username</th>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Language</th>
+  </tr>
+
+<% for profile in @profiles %>
+  <tr>
+    <td><%= User.find(profile.user_id).login %>
+    <td><%=h profile.first_name %></td>
+    <td><%=h profile.last_name %></td>
+    <td><%=h profile.language %></td>
+    <td><%= link_to 'Show', profile %></td>
+    <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
+    <td><%= link_to 'Destroy', profile, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+
+<% end %>
+<tr>
+<td><%= link_to 'New profile', new_profile_path %></td>
+</tr>
+</table>
+
+<br />
+
+
+</center>
