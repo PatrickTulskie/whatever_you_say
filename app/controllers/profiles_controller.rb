@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.xml
   
-  before_filter :find_current_user, :only => [:index, :edit]
+  before_filter :find_current_user, :only => [:index, :edit, :update]
   layout 'logged_in'
   
   def index
