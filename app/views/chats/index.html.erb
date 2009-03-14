@@ -1,16 +1,3 @@
-
-<h2><img style="width: 80px; height: 80px;" alt="WUS" title="WUS" src="/images/WUS_logo.jpg" align="middle">  Whatever You Say v1.0</h2>
-
-<div align=right>
-<% if logged_in? %>
-  <%= link_to 'Logout', logout_path %>
-<% end %><p>
-
-<!--<%= link_to 'Edit My Profile', edit_user_path(:action => 'edit', :id => session[:user_id]) %>-->
-<%= link_to 'Edit My Profile', {:controller => 'profiles', :action => 'check_profile', :id => session[:user_id] }%>
-
-</div>
-
 <h1>Currently Active Chats</h1>
 
 <table>

@@ -1,3 +1,8 @@
+/* @override 
+	http://whatever.local/stylesheets/base.css?1237006841
+	http://whatever.local/stylesheets/base.css?1237009107
+*/
+
 /* === Ada's CSS Style == */
 
 body { 
@@ -81,3 +86,34 @@ div.fieldWithErrors textarea
 {
 	
 }
+
+/* @group Application Header */
+
+img#wus_logo {
+	width: 60px;
+	height:  60px;
+}
+
+span#wus_title.wus_title {
+	font-size: 2em;
+	font-weight: bold;
+	display: inline-block;
+}
+
+#wus_header {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+div#application_header {
+	border-bottom: 1px dotted;
+	border-color: lightblue;
+	padding-bottom: 7px;
+}
+
+div#user_actions {
+	float: right;
+}
+
+
+/* @end */

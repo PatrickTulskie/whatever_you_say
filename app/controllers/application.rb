@@ -14,5 +14,10 @@ class ApplicationController < ActionController::Base
   def record_not_found
     render :file => File.join(RAILS_ROOT, 'public', '404.html'), :status => 404
   end
+  
+  def find_current_user
+    @user = User.find(session[:user_id])
+  end  
+  
 end
 

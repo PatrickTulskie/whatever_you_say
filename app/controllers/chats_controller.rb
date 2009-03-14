@@ -1,6 +1,9 @@
 class ChatsController < ApplicationController
   # GET /chats
   # GET /chats.xml
+  layout 'logged_in'
+  # before_filter :find_current_user
+  
   def index
     if session
       @chats = Chat.find_all_by_member(session[:user_id])
