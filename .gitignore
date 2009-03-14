@@ -5,4 +5,5 @@ doc/api
 doc/app
 coverage
 db/*.sqlite3
+db/schema.rb
 tmp/restart.txt
