@@ -6,8 +6,6 @@
 		<%= message.body %>
 	</td>
 </tr>
-<% if highlight == true -%>
-<script>
-	new Effect.Highlight('message_<%=message.id%>');
-</script>
+<% if (defined? highlight) && (highlight == true) -%>
+	<script>new Effect.Highlight('message_<%=message.id%>');</script>
 <% end -%>

@@ -37,6 +37,7 @@
 <%= periodically_call_remote( :url => update_chat_window_path(:chat_id => @chat.id),
 															:frequency => '3', 
 															:update => 'chat_table',
-															:position => :bottom
+															:position => :bottom,
+															:complete => "with ($('chat_messages')) {scrollTop = scrollHeight;};"
 															)
 %>

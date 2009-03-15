@@ -100,19 +100,16 @@ class ChatsController < ApplicationController
       # update_chat_window(@chat.id)
       render :partial => 'message', :locals => {:message => @message, :highlight => true}
       @chat.mark_all_read(session[:user_id])
+    else
+      render :nothing => true
     end
   end
   
   def update_chat_window(chat_id=nil)
     chat = Chat.find(chat_id.nil? ? params[:chat_id] : chat_id)
     new_messages = chat.get_unread_messages(session[:user_id])
-    response = ""
     if new_messages.length > 0
-      new_messages.each do |message|
-        response << "<tr id=\"message_#{message.id}\"><td><b>#{message.sender.login.titleize}:</b></td><td>#{message.body}</td></tr><script>new Effect.Highlight('message_#{message.id}')</script>"
-      end
-      response << "<script>with ($('chat_messages')) {scrollTop = scrollHeight;};</script>"
-      render :text => response
+      render :partial => 'message', :collection => new_messages, :locals => {:highlight => true }
     else
       render :nothing => true
     end
