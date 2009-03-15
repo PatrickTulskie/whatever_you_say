@@ -11,7 +11,7 @@
 
 <% for profile in @profiles %>
   <tr>
-    <td><%= User.find(profile.user_id).login %>
+    <td><%= User.find(profile.user).login %></td>
     <td><%=h profile.first_name %></td>
     <td><%=h profile.last_name %></td>
     <td><%=h profile.language %></td>
