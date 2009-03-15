@@ -43,9 +43,16 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1/edit
   def edit
-    @profile = Profile.find(params[:id])
+    if params[:id] == 0 
+      @profile = Profile.find(params[:id])
+    else
+      # Handles the unlikely event that the currently logged in user doesn't have a profile
+      @profile = Profile.new
+      @user.profile = @profile
+      @profile.save
+    end
     # @profile = Profile.find_or_create_by_user_id(@user.id)
-    # TODO: if @user is admin then look at the params[:id] we got, otherwise, edit the current user's profile.
+    # Admins can edit any profile.
     if !@user.has_role?(:admin) && @profile != @user.profile
       redirect_to edit_profile_path(@user.profile)
     end
