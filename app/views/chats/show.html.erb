@@ -1,18 +1,18 @@
 <div id="chat_messages">
 	<table id="chat_table">
-		<% @chat.messages.each do |message| %>
-		<tr id="message_<%= message.id %>">
-			<td><b><%= message.sender.login.titleize %>:</b></td>
-			<td><%= message.body %></td>
-		</tr>
-		<% end %>
+		<%= render :partial => 'message', :collection => @chat.messages, :locals => {:highlight => false} %>
 	</table>
+	<script type="text/javascript">
+    with ($('chat_messages')) {scrollTop = scrollHeight;}
+  </script>
 </div>
 <br />
 <div id="message_form">
 	<% remote_form_for :message, 
-											@message, 
-											:url => {:controller => "chats", :action => "create_message"}, 
+											@message,
+											:html => {:id => 'new_message_form'},
+											:url => {:controller => "chats", :action => "create_message"},
+											:complete => "with ($('chat_messages')) {scrollTop = scrollHeight;};",
 											:after => "$('message_body').value=''",
 											:update => 'chat_table',
 											:position => :bottom do |f| %>
@@ -20,13 +20,22 @@
 	  <%= f.hidden_field :sender_id, :value => session[:user_id] %>
 	  <%= f.hidden_field :chat_id, :value => @chat.id %>
 	  <%= f.hidden_field :source_language_id %>
-		<%= f.text_field :body, :rows => 3, :cols => 50 %>
+		<%= f.text_area :body, :rows => 3, :cols => 50 %>
 	  <%= f.submit "Send" %>
 	<% end %>
 </div>
+<script type="text/javascript">
+	var chat_table = $('new_message_form');
+	Event.observe($('message_body'), 'keypress', function(event){ 
+		if(event.keyCode == Event.KEY_RETURN){
+			Event.stop(event);
+	 		new Ajax.Updater('chat_table', '/chats/create_message', {asynchronous:true, evalScripts:true, insertion:'bottom', onComplete:function(request){with ($('chat_messages')) {scrollTop = scrollHeight;};}, parameters:Form.serialize(chat_table)}); $('message_body').value=''; return false;
+		}
+	});
+</script>
 <%= link_to "Back to Chats", chats_path %>
 <%= periodically_call_remote( :url => update_chat_window_path(:chat_id => @chat.id),
-															:frequency => '2', 
+															:frequency => '3', 
 															:update => 'chat_table',
 															:position => :bottom
 															)

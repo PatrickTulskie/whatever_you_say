@@ -78,11 +78,7 @@ class UsersController < ApplicationController
         end
       end
     else
-      @user = create_new_user(params[:user])
-      @user.profile = Profile.new
-      self.current_user = (@user.save!)? @user : render(:action => 'new')
-      redirect_to :action => 'edit', :id => self.current_user.login
-      # flash[:notice] = "Account successfully created."
+      create_new_user(params[:user])
     end
   end
   

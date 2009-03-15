@@ -1,6 +1,7 @@
 /* @override 
 	http://whatever.local/stylesheets/base.css?1237006841
 	http://whatever.local/stylesheets/base.css?1237009107
+	http://whatever.local/stylesheets/base.css?1237010326
 */
 
 /* === Ada's CSS Style == */
@@ -115,5 +116,21 @@ div#user_actions {
 	float: right;
 }
 
+
+/* @end */
+
+
+/* @group My Group */
+
+div#chat_messages {
+	height: 400px;
+	overflow: auto;
+	background: white;
+}
+
+input#message_body {
+	width: 600px;
+	height: 30px;
+}
 
 /* @end */

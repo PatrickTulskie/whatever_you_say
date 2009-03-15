@@ -38,6 +38,7 @@ class Chat < ActiveRecord::Base
     else
       self.receiver_read_count = self.messages.length
     end
+    self.save
   end
   
     

@@ -96,9 +96,10 @@ class ChatsController < ApplicationController
   def create_message
     @message = Message.new(params[:message])
     @chat = @message.chat
-    @chat.mark_all_read(session[:user_id])
     if @message.save
-      update_chat_window(@chat.id)
+      # update_chat_window(@chat.id)
+      render :partial => 'message', :locals => {:message => @message, :highlight => true}
+      @chat.mark_all_read(session[:user_id])
     end
   end
   
@@ -106,10 +107,15 @@ class ChatsController < ApplicationController
     chat = Chat.find(chat_id.nil? ? params[:chat_id] : chat_id)
     new_messages = chat.get_unread_messages(session[:user_id])
     response = ""
-    new_messages.each do |message|
-      response << "<tr id=\"message_#{message.id}\"><td><b>#{message.sender.login.titleize}:</b></td><td>#{message.body}</td></tr><script>new Effect.Highlight('message_#{message.id}')</script>"
+    if new_messages.length > 0
+      new_messages.each do |message|
+        response << "<tr id=\"message_#{message.id}\"><td><b>#{message.sender.login.titleize}:</b></td><td>#{message.body}</td></tr><script>new Effect.Highlight('message_#{message.id}')</script>"
+      end
+      response << "<script>with ($('chat_messages')) {scrollTop = scrollHeight;};</script>"
+      render :text => response
+    else
+      render :nothing => true
     end
-    render :text => response
   end  
   
 end

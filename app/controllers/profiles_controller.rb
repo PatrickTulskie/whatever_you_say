@@ -43,9 +43,13 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1/edit
   def edit
-    # @profile = Profile.find(params[:id])
-    @profile = Profile.find_or_create_by_user_id(@user.id)
+    @profile = Profile.find(params[:id])
+    # @profile = Profile.find_or_create_by_user_id(@user.id)
     # TODO: if @user is admin then look at the params[:id] we got, otherwise, edit the current user's profile.
+    if !@user.has_role?(:admin) && @profile != @user.profile
+      redirect_to edit_profile_path(@user.profile)
+    end
+      
   end
 
   # # POST /profiles
@@ -68,8 +72,8 @@ class ProfilesController < ApplicationController
   # PUT /profiles/1
   # PUT /profiles/1.xml
   def update
-    # @profile = Profile.find(params[:id])
-    @profile = Profile.find_or_create_by_user_id(@user.id)
+    @profile = Profile.find(params[:id])
+    # @profile = Profile.find_or_create_by_user_id(@user.id)
 
     respond_to do |format|
       if @profile.update_attributes(params[:profile])

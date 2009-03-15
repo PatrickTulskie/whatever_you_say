@@ -1,0 +1,13 @@
+<tr id="message_<%= message.id %>">
+	<td>
+		<b><%= message.sender.login.titleize %>:</b>
+	</td>
+	<td>
+		<%= message.body %>
+	</td>
+</tr>
+<% if highlight == true -%>
+<script>
+	new Effect.Highlight('message_<%=message.id%>');
+</script>
+<% end -%>

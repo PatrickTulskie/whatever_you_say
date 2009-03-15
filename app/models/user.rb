@@ -23,6 +23,9 @@ class User < ActiveRecord::Base
   # Relationships
   has_and_belongs_to_many :roles
   has_one :profile
+  
+  # Actions
+  after_create :create_profile
 
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
@@ -64,4 +67,10 @@ class User < ActiveRecord::Base
   rescue URI::InvalidURIError
     errors.add_to_base("Invalid OpenID URL")
   end
+  
+  def create_profile
+    self.profile = Profile.new
+    self.profile.save
+  end
+    
 end

@@ -7,8 +7,10 @@
 
 <% form_for(@profile) do |f| %>
   <%= f.error_messages %>
-
-
+	<p>
+		Login: 
+		<%= @profile.user.login %>
+	</p>
   <p>
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name %>
