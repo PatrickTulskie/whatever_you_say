@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.xml
   
-  before_filter :find_current_user, :only => [:index, :edit, :update]
+  before_filter :find_current_user, :only => [:index, :edit, :update, :show]
   layout 'logged_in'
   
   def index
@@ -68,6 +68,7 @@ class ProfilesController < ApplicationController
          format.html { redirect_to(@profile) }
          format.xml  { render :xml => @profile, :status => :created, :location => @profile }
        else
+         @profile.errors << @profile.user.errors
          format.html { render :action => "new" }
          format.xml  { render :xml => @profile.errors, :status => :unprocessable_entity }
        end
@@ -77,23 +78,21 @@ class ProfilesController < ApplicationController
   # PUT /profiles/1
   # PUT /profiles/1.xml
   def update
+    # render :text => "<pre>#{params.to_yaml}</pre>" and return
     @profile = Profile.find(params[:id])
     # @profile = Profile.find_or_create_by_user_id(@user.id)
+    unless params.empty?
+      @profile.update_attributes(params[:profile])
+      @profile.user.update_attributes(params[:user])
+    end
     respond_to do |format|
-      if @user.update_attributes(params[:email])
-        @user.save
-        flash[:notice] = 'Profile was successfully updated.'
-        format.html { redirect_to(@profile) }
-        format.xml  { head :ok }
-        else 
-      if @profile.update_attributes(params[:profile])
+      if @profile.errors.empty? && @profile.user.errors.empty?
         flash[:notice] = 'Profile was successfully updated.'
         format.html { redirect_to(@profile) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @profile.errors, :status => :unprocessable_entity }
-      end
+        format.xml  { render :xml => @profile.errors + @profile.user.errors, :status => :unprocessable_entity }
       end
     end
   end

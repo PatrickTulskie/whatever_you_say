@@ -4,9 +4,8 @@
 <div class="centerFieldset">
 <fieldset style="width: 400px">
 
-
-<% form_for(@profile) do |f| %>
-  <%= f.error_messages %>
+<%= error_messages_for :object => [@profile, @profile.user] %>
+<% form_for @profile do |f| %>
 	<p>
 		Login: 
 		<%= @profile.user.login %>
@@ -20,7 +19,7 @@
     <%= f.text_field :last_name %>
   </p>
   <p>
-    <% fields_for :email, @user do |ff| %>
+    <% fields_for :user, @profile.user do |ff| %>
     <%= ff.label "Email" %><br />
     <%= ff.text_field :email %>
     <% end %>
