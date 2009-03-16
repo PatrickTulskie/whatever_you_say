@@ -21,8 +21,13 @@
 </p>
 
 <p>
-  <b>Language:</b>
-  <%=h @profile.language %>
+  <b>Email:</b>
+<%= User.find(@profile.user_id).email %>
+</p>
+
+<p>
+  <b>Language ID:</b>
+  <%=h @profile.language_id %>
 </p>
 
 

@@ -57,30 +57,35 @@ class ProfilesController < ApplicationController
       
   end
 
-  # # POST /profiles
-  # # POST /profiles.xml
-  # def create
-  #   @profile = Profile.new(params[:profile])
-  # 
-  #   respond_to do |format|
-  #     if @profile.save
-  #       flash[:notice] = 'Profile was successfully created.'
-  #       format.html { redirect_to(@profile) }
-  #       format.xml  { render :xml => @profile, :status => :created, :location => @profile }
-  #     else
-  #       format.html { render :action => "new" }
-  #       format.xml  { render :xml => @profile.errors, :status => :unprocessable_entity }
-  #     end
-  #   end
-  # end
+  # POST /profiles
+  # POST /profiles.xml
+  def create
+     @profile = Profile.new(params[:profile])
+  # @user = @profile.email params[:email]   
+     respond_to do |format|
+       if @profile.save
+         flash[:notice] = 'Profile was successfully created.'
+         format.html { redirect_to(@profile) }
+         format.xml  { render :xml => @profile, :status => :created, :location => @profile }
+       else
+         format.html { render :action => "new" }
+         format.xml  { render :xml => @profile.errors, :status => :unprocessable_entity }
+       end
+     end
+   end
 
   # PUT /profiles/1
   # PUT /profiles/1.xml
   def update
     @profile = Profile.find(params[:id])
     # @profile = Profile.find_or_create_by_user_id(@user.id)
-
     respond_to do |format|
+      if @user.update_attributes(params[:email])
+        @user.save
+        flash[:notice] = 'Profile was successfully updated.'
+        format.html { redirect_to(@profile) }
+        format.xml  { head :ok }
+        else 
       if @profile.update_attributes(params[:profile])
         flash[:notice] = 'Profile was successfully updated.'
         format.html { redirect_to(@profile) }
@@ -88,6 +93,7 @@ class ProfilesController < ApplicationController
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @profile.errors, :status => :unprocessable_entity }
+      end
       end
     end
   end

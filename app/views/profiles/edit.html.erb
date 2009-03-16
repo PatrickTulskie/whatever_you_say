@@ -20,8 +20,14 @@
     <%= f.text_field :last_name %>
   </p>
   <p>
-    <%= f.label :language %><br />
-    <%= f.text_field :language %>
+    <% fields_for :email, @user do |ff| %>
+    <%= ff.label "Email" %><br />
+    <%= ff.text_field :email %>
+    <% end %>
+  </p>
+  <p>
+    <%= f.label "Language ID" %><br />
+    <%= f.text_field :language_id %>
   </p>
   <p>
     <%= f.submit "Update" %>
