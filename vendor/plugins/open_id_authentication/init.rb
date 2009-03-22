@@ -1,5 +1,5 @@
 if config.respond_to?(:gems)
-  config.gem 'ruby-openid', :lib => 'openid'
+  config.gem 'ruby-openid', :lib => 'openid', :version => '>=2.0.4'
 else
   begin
     require 'openid'
@@ -13,5 +13,6 @@ else
 end
 
 config.to_prepare do
+  OpenID::Util.logger = Rails.logger
   ActionController::Base.send :include, OpenIdAuthentication
 end
