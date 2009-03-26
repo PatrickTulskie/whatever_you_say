@@ -1,15 +1,16 @@
-require "rtranslate"
+# require "rtranslate"
+require 'google_translate'
 
 class WusTranslate
   
   def initialize
-    # Are translation services available?
-    
+    @translator = Google::Translator.new
   end  
     
   def translate_text(text, destination, source="en")
     # Use whatever libraries are available
-    result = Translate.t(text, Language::ENGLISH, Language::CHINESE_SIMPLIFIED)
+    # result = Translate.t(text, Language::ENGLISH, Language::CHINESE_SIMPLIFIED)
+    @translator.translate(source.to_sym, destination.to_sym, text)
   end
   
   def translation_available?
