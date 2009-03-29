@@ -1,15 +1,8 @@
-<h2><img style="width: 80px; height: 80px;" alt="WUS" title="WUS" src="/images/WUS_logo.jpg" align="middle">  Whatever You Say v1.0</h2>
-
-<div align=right>
-<% if logged_in? %>
-  <%= link_to 'Logout', logout_path %>
-<% end %><p>
-
-</div>
-
+<br>
+<center>
 <h2>Messages Log</h2>
 
-<table>
+<table align="center" width="500" bgcolor="#CCCCCC">
   <tr>
     <th>Sender</th>
     <th>Chat</th>
@@ -33,3 +26,4 @@
 <br />
 
 <%= link_to 'New message', new_message_path %>
+</center>

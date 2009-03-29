@@ -5,13 +5,13 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>WUS Chats: <%= controller.action_name %></title>
-  <%= stylesheet_link_tag 'base', 'scaffold' %>
+  <%= stylesheet_link_tag 'base','reset' %>
 	<%= javascript_include_tag :defaults %>
 </head>
 <body>
-	<%= render :partial => 'shared/wus_header' %>
+
   <% if flash[:notice] -%>
-    <div id="notice"><%= flash[:notice] %></div>
+    <div id="notice" align='center'><%= flash[:notice] %></div>
   <% end -%>
   <script type="text/javascript">
     setTimeout("new Effect.Fade('notice');", 6000)

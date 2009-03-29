@@ -1,5 +1,6 @@
+<br>
 <center>
-
+<h2>My Profile</h2>
 <div class="centerFieldset">
 <fieldset style="width: 400px">
 <p>
@@ -30,10 +31,10 @@
   <%=h @profile.language.name %>
 </p>
 
-
+<div align='right'>
 <%= link_to 'Edit', edit_profile_path(@profile) %>
 <% if @user.has_role?(:admin) %>
- | <%= link_to 'Back', profiles_path %>
+| <%= link_to 'Back', profiles_path %>
 <% end %>
 </div>
 </center>

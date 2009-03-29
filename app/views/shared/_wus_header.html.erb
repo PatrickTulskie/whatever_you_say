@@ -1,14 +1,9 @@
-<div id="application_header">
-	<div id="user_actions">
-		<% if logged_in? %>
-			<%= link_to 'Chats', chats_path %> | 
-			<%= link_to 'Profile', edit_profile_path(User.find(session[:user_id]).profile || 0) %> | 
-			<%= link_to 'Logout', logout_path %>
-		<% end %>
-	</div>
-	
-	<div id="wus_header">
-		<img id="wus_logo" alt="WUS" title="WUS" src="/images/WUS_logo.jpg" align="middle" />
-		<span id="wus_title" class="wus_title">Whatever You Say v1.0</span>
-	</div>
-</div>
+
+
+  <div id="wus_header">
+    <div id="logo">
+      <h1><img src="../../images/WUS_logo.jpg" alt="WUS" width="70" height="70" /> Whatever You Say v1.0 </h1>
+      <div><b>RoR web based instant messenger</b></div>
+    </div>
+  </div>
+

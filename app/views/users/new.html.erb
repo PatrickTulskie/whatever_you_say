@@ -1,21 +1,12 @@
 <% @user.password = @user.password_confirmation = nil %>
-
-<h2><img style="width: 80px; height: 80px;" alt="WUS" title="WUS" src="/images/WUS_logo.jpg" align="middle">  Whatever You Say v1.0</h2>
-
-<div align=right>
-<% if logged_in? %>
-  <%= link_to 'Logout', logout_path %>
-<% end %><p>
-
-</div>
-
+<br>
 <center>
 <%= title "Signup", :h2 %>
 
 
 <% form_for @user do |f| %>
 	<%= f.error_messages %>
-	<fieldset style="width: 400px;">
+	<fieldset style="width: 400px;" align="right">
 		<legend>Your Details</legend>
 		<ol>
 			
@@ -35,7 +26,7 @@
 				<%= f.text_field :email %><br>
 
 				<div class="buttons" align=right>
-					<%= submit_tag 'Sign up' %>
+				<br><%= submit_tag 'Sign up' %>
 				</div>
 			
 		</ol>

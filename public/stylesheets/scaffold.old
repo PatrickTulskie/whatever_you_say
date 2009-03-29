@@ -1,6 +1,3 @@
-body { 
-	background:url('images/bg.gif') bottom;
-	background-color: #fff; color: #333; }
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;

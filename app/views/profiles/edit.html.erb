@@ -1,5 +1,6 @@
+<br>
 <center>
-<h2>Editing profile</h2>
+<h2>Editing Profile</h2>
 
 <div class="centerFieldset">
 <fieldset style="width: 400px">
@@ -7,9 +8,9 @@
 <%= error_messages_for :object => [@profile, @profile.user] %>
 <% form_for @profile do |f| %>
 	<p>
-		Login: 
-		<%= @profile.user.login %>
-	</p>
+		<label>Login:</label> 
+		<font color="#0000F9"><%= @profile.user.login %></font>
+	</p><br>
   <p>
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name %>
@@ -28,13 +29,13 @@
     <%= f.label "Language" %><br />
     <%= f.select :language_id, Language.languages_for_select %>
   </p>
+  <br>
   <p>
     <%= f.submit "Update" %>
   </p>
 <% end %>
 <div align=right>
-<%= link_to 'Show', @profile %> |
-<%= link_to 'Back', profiles_path %>
+<%= link_to 'Show', @profile %> | <%= link_to 'Back', profiles_path %>
 </div>
 </center>
 

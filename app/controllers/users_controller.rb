@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :create
- 
+  layout 'logged_in'
 
   # GET /users
   # GET /users.xml
