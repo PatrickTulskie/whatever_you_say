@@ -1,14 +1,9 @@
-<h2><img style="width: 80px; height: 80px;" alt="WUS" title="WUS" src="/images/WUS_logo.jpg" align="middle">  Whatever You Say v1.0</h2>
+<br>
+<center>
+<h2>Editing Message</h2>
 
-<div align=right>
-<% if logged_in? %>
-  <%= link_to 'Logout', logout_path %>
-<% end %><p>
-
-</div>
-
-<h1>Editing message</h1>
-
+<div class="centerFieldset">
+<fieldset style="width: 400px">
 <% form_for(@message) do |f| %>
   <%= f.error_messages %>
 
@@ -28,6 +23,8 @@
     <%= f.submit "Update" %>
   </p>
 <% end %>
-
+<div align=right>
 <%= link_to 'Show', @message %> |
 <%= link_to 'Back', messages_path %>
+</div>
+</center>

@@ -1,55 +1,43 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-<head>
-	
-</head>
-<body>
-	
-<center>
-<p>	
-<img style="width: 80px; height: 80px;" alt="WUS" title="WUS" src="/images/WUS_logo.jpg">
-</p>
-<%= title "Whatever You Say v1.0", :h2 %>
-
-<% form_tag session_path do %>
-	<fieldset style="width: 300px;">
-		<legend>Enter Your Login</legend>
-		
-		<ol>
+<div id="content">
+  <div id="inner">
+    <div class="left float-l">
+      <h2>WUS News</h2>
+      <div style="padding-top:50px; height: 100px;">blah blah blah </div>
+      
+      <h2>WUS Features</h2>
+      <div style="padding-top:50px;" height: 50px;">blah blah blah some more</div>
+      <br/>
+    </div>
+    <div class="right folat-r">
+      <div id="side">
+        <div id="top">
+          <h2 class="style1">Login</h2>
+          <p>
+			<% form_tag session_path do %>
+			<fieldset style="border:0;">
+			<font color="#FFFFFF">Username</font>
+			<center><%= text_field_tag 'login', @login %></center>
 			
-				<%= label_tag 'login', 'Username'%>
-				<%= text_field_tag 'login', @login %><br>
+			<font color="#FFFFFF">Password</font>
+			<center><%= password_field_tag 'password', nil %></center><br>
 			
-                	
-				<%= label_tag 'password', 'Password' %>
-				<%= password_field_tag 'password', nil %><p>
+			<center><font color="#000000">Remember Me</font>
+			<%= check_box_tag 'remember_me', '1', @remember_me %></center><br>
 			
+			<center>
+			<div class="buttons">
+			<%= submit_tag 'Login' %>
+			<%= link_to 'Forgotten Password', forgot_password_path %>
+			</center>
+			</fieldset>
 			
-				<%= label_tag 'remember_me', 'Remember me' %>
-				<%= check_box_tag 'remember_me', '1', @remember_me %></p><p>
-				
-				</p><div class="buttons">
-					<%= submit_tag 'Login' %>
-					<%= link_to 'Forgotten Password', forgot_password_path %>
-				</div>
+			<% end -%>
 			
-		</ol>
-	</fieldset>
-	
-
-<!-- #comment out OpenID section
-
-	<fieldset>
-		<legend>Login with OpenID</legend>
-		<ol>
-			<li>
-				<%= label_tag 'openid_url', 'OpenID URL' %>
-				<%= text_field_tag 'openid_url' %>
-			</li>
-		</ol>
-	</fieldset>
--->
-
-<% end -%>
-
-</center></body></html>
+			</p>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /content -->

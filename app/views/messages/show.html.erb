@@ -1,12 +1,8 @@
-<h2><img style="width: 80px; height: 80px;" alt="WUS" title="WUS" src="/images/WUS_logo.jpg" align="middle">  Whatever You Say v1.0</h2>
-
-<div align=right>
-<% if logged_in? %>
-  <%= link_to 'Logout', logout_path %>
-<% end %><p>
-
-</div>
-
+<br>
+<center>
+<h2>Message Info</h2>
+<div class="centerFieldset">
+<fieldset style="width: 400px">
 <p>
   <b>Sender:</b>
   <%=h @message.sender_id %>
@@ -23,5 +19,11 @@
 </p>
 
 
-<%= link_to 'Edit', edit_message_path(@message) %> |
-<%= link_to 'Back', messages_path %>
+<div align='right'>
+<%= link_to 'Edit', edit_message_path(@message) %>
+| <%= link_to 'Back', messages_path %>
+</div>
+
+</fieldset>
+</div>
+</center>

@@ -1,125 +1,183 @@
-/* @override 
-	http://whatever.local/stylesheets/base.css?1237006841
-	http://whatever.local/stylesheets/base.css?1237009107
-	http://whatever.local/stylesheets/base.css?1237010326
-*/
+body {
+	text-align:center;
+	background-color: #CCCCCC;
+	height:944px;
+}
 
-/* === Ada's CSS Style == */
-
-body { 
-	  background:url(images/bg.gif) bottom;
-	  background-color: #fff; color: #333; }
+ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+  color:#0000F8;
+}
 
 h2 {
 	  color:#244532;
+	  font-size: 16pt;	  
 }
 
 a {
 	text-decoration:none;
-	color:#0068AD
+	color:#000000
 }
-
 a:hover {
 	text-decoration: underline;
 	color:#fff;
 	background-color:#000
 }
 
+
+#wrap {
+	width:847px;
+	text-align:left;
+	margin:0 auto;
+	position: relative;
+	top:10px;
+}
+.float-l {
+	float:left
+}
+.folat-r {
+	float:right
+}
+.clearfix {
+	clear:both
+}
+/* header */
+#wus_header {
+	height:147px;
+	background:url(images/hd.gif);
+	position:relative
+}
+#nav {
+	background:url(images/nav.gif);
+	height:43px;
+	top:148px;
+	width:847px;
+}
+ul#nav {
+}
+ul#nav li {
+	display:inline;
+}
+ul#nav a {
+	color:#FFFFFF;
+	line-height:43px;
+	padding:0 10px;
+	border-right:#FFFFFF 1px solid;
+}
+#logo {
+	position:absolute;
+	top:40px;
+	left:100px
+}
+#logo h1 {
+	font-size:24px;
+	color:#FFFFFF
+}
+#logo div {
+	padding-left:100px
+}
+/* content */
+
 .centerFieldset {
 	text-align:center;
 }
 
 .centerFieldset fieldset{
+
+	border:2;
 	display:inline;
 	padding-left:100px;
 	text-align:left;
 }
 
+.centerFieldset b{
+	color:#244532;
+}
 
+legend {
+	text-align:left;
+}
+
+label {
+	color:#244532;
+	font-weight:bold;
+}
+
+#content {
+	height:540px;
+	background:#FFFFFF
+}
+#content .left {
+	width:400px;
+	background:#FFFFFF url(images/l.gif) no-repeat;
+	padding:0 50px
+}
+#content .left h2 {
+	color:#608803;
+	font-size:20px;
+	padding:20px 0
+}
+#content .left a {
+	color:#336633
+}
+#content .right {
+	width:345px;
+	background:#FFFFFF url(images/r.gif) no-repeat;
+	border-left:#403f40 1px solid;
+	height:540px;s
+}
+#side #top {
+	background:url(images/g_top.gif);
+	height:190px;
+    width: 200px;
+
+}
+#side #bm {
+
+	background:url(images/g_top.gif);
+	height:190px;
+	width: 200px;
+
+}
+#top, #bm {
+	width:200px;
+	margin: 0 auto;
+	margin-top:30px;
+    padding: 18px;
+	}
+#side h2 {
+	font-size:20px;
+	color:#FFFFFF;
+	padding:15px 0 10px 0
+}
+#side li {
+	list-style: url(images/ar.gif) inside;
+	line-height:20px
+}
 
 /* === FLASH MESSAGES === */
-div#flash-notice {
-	
+
+div#notice {	
 	text-align: center;
-	color:#B52728;
-	
+	color: blue;
+}
+
+div#flash-notice {	
+	text-align: center;
+	color: blue;
 }
 
 div#flash-warning {
-	
+	text-align: center;
+	color:red;
 }
 
 div#flash-error {
-	
+	text-align: center;
+	color:red;
 }
-
-/* === ERROR MESSAGES === */
-div#errorExplanation {
-	
-}
-
-div#errorExplanation h2 {
-	
-}
-
-div#errorExplanation p {
-	
-}
-
-div#errorExplanation ul {
-	
-}
-
-div#errorExplanation ul li {
-	
-}
-
-/* === FORMS === */
-div.fieldWithErrors {
-	
-}
-
-div.fieldWithErrors label {
-	
-}
-
-div.fieldWithErrors input, div.fieldWithErrors select, 
-div.fieldWithErrors textarea
-{
-	
-}
-
-/* @group Application Header */
-
-img#wus_logo {
-	width: 60px;
-	height:  60px;
-}
-
-span#wus_title.wus_title {
-	font-size: 2em;
-	font-weight: bold;
-	display: inline-block;
-}
-
-#wus_header {
-	display: inline-block;
-	vertical-align: middle;
-}
-
-div#application_header {
-	border-bottom: 1px dotted;
-	border-color: lightblue;
-	padding-bottom: 7px;
-}
-
-div#user_actions {
-	float: right;
-}
-
-
-/* @end */
-
 
 /* @group My Group */
 
@@ -135,3 +193,66 @@ input#message_body {
 }
 
 /* @end */
+
+
+/* footer */
+
+#footer {
+	height:70px;s
+	margin-left: 50px;
+	margin-top: 14px;
+	position:relative
+}
+#xhtml {
+	position: absolute;
+	top:20px;
+	left:550px
+}
+.q {
+	width:130px;
+	padding:5px 0
+}
+.submit {
+	background:url(images/submit.gif) no-repeat;
+	height:31px;
+	width:27px;
+	border:0;
+}
+
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: #C0E403;
+  display: table;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+  
+}
