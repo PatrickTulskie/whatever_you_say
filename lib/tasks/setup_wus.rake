@@ -38,7 +38,7 @@ namespace :wus do
   desc "Import the Languages"
   task :setup_languages => :environment do
     g = Google::Translator.new
-    g.supported_languages[:to_languages].each do |lang|
+    g.supported_languages[:from_languages].each do |lang|
       l = Language.find_or_create_by_name_and_short_name(lang.name, lang.code)
       l.save
       puts "Imported #{lang.name}."
