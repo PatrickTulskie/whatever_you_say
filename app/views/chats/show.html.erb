@@ -1,6 +1,6 @@
 <div id="chat_messages">
 	<table id="chat_table">
-		<%= render :partial => 'message', :collection => @chat.messages, :locals => {:highlight => false} %>
+		<%= render :partial => 'message', :collection => @messages, :locals => {:highlight => false} %>
 	</table>
 	<script type="text/javascript">
     with ($('chat_messages')) {scrollTop = scrollHeight;}
@@ -19,7 +19,7 @@
 	  <%= f.error_messages %>
 	  <%= f.hidden_field :sender_id, :value => session[:user_id] %>
 	  <%= f.hidden_field :chat_id, :value => @chat.id %>
-	  <%= f.hidden_field :source_language_id %>
+	  <%= f.hidden_field :language_id, :value => @user.language.id %>
 		<%= f.text_area :body, :rows => 3, :cols => 50 %>
 	  <%= f.submit "Send" %>
 	<% end %>
