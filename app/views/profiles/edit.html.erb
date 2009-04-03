@@ -26,8 +26,8 @@
     <% end %>
   </p>
   <p>
-    <%= f.label "Language ID" %><br />
-    <%= f.text_field :language_id %>
+    <%= f.label "Language" %><br />
+    <%= f.select :language_id, Language.languages_for_select %>
   </p>
   <br>
   <p>

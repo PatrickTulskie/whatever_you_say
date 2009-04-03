@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :languages
+
   # For ajax calls to update the chat window
   map.update_chat_window '/chats/:chat_id/update_chat_window', :controller => "chats", :action => "update_chat_window"
  

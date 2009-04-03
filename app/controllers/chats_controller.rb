@@ -21,10 +21,11 @@ class ChatsController < ApplicationController
   # GET /chats/1.xml
   def show
     @chat = Chat.find(params[:id])
-    @user = @chat.user
+    @user = User.find(session[:user_id])
     @receiver = @chat.receiver
     @message = Message.new
     @chat.mark_all_read(session[:user_id])
+    @messages = (@chat.messages.length > 0) ? translate_messages(@chat.messages, @user.language) : []
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @chat }
@@ -107,12 +108,30 @@ class ChatsController < ApplicationController
   
   def update_chat_window(chat_id=nil)
     chat = Chat.find(chat_id.nil? ? params[:chat_id] : chat_id)
-    new_messages = chat.get_unread_messages(session[:user_id])
+    user = User.find(session[:user_id])
+    messages = chat.get_unread_messages(user.id).reject{|m|m.sender_id==user.id}
+    new_messages = translate_messages(messages, user.language)
+    
     if new_messages.length > 0
       render :partial => 'message', :collection => new_messages, :locals => {:highlight => true }
     else
       render :nothing => true
     end
-  end  
+  end
+  
+  private
+  
+  def translate_messages(messages, language)
+    new_messages = []
+    messages.each do |message|
+      trans_message = message
+      if language.id != message.language.id
+        trans_message.body = message.translate(language.short_name)
+      end
+      new_messages << trans_message
+    end
+    return new_messages
+  end
+  
   
 end
