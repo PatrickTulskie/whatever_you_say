@@ -8,8 +8,8 @@ class Message < ActiveRecord::Base
   validates_length_of :body, :minimum => 1
   
   def translate(destination_language)
-    t = Google::Translator.new
-    t.translate(self.language.short_name.to_sym, destination_language.to_sym, self.body)
+    w = WusTranslate.new
+    w.translate_text(self.body, destination_language.to_sym, self.language.short_name.to_sym)
   end  
   
 end
