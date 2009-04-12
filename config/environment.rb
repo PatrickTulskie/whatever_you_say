@@ -31,7 +31,7 @@ Rails::Initializer.run do |config|
   config.gem 'rubyist-aasm', :lib => 'aasm', :source => 'http://gems.github.com', :version => '2.0.2'
   config.gem 'mislav-will_paginate', :version => '2.3.6', :lib => 'will_paginate', :source => 'http://gems.github.com'
   config.gem 'googletranslate', :lib => 'rtranslate'
-  config.gem 'shvets-google_translate', :lib => 'google_translate', :source => 'http://gems.github.com'
+  config.gem 'shvets-google_translate', :lib => 'google_translate'
   config.gem 'tranexp'
   
   # These cause problems with irb. Left in for reference
