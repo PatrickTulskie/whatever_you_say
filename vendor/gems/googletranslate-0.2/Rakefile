@@ -1,0 +1,12 @@
+require 'rubygems'
+require 'hoe'
+
+Hoe.new('googletranslate', '0.2') do |p|
+  p.rubyforge_name = 'googletranslate'
+  p.author = 'Ye Dingding'
+  p.email = 'yedingding@gmail.com'
+  p.url = 'http://sishen.lifegoo.com'
+  p.summary = 'Google translate ruby client api'
+  p.description = 'A simple, unofficial, ruby client API for using Google Translate.'
+  p.extra_deps << ['hpricot', '>= 0.4']
+end
