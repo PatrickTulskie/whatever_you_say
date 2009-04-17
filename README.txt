@@ -18,6 +18,9 @@ rake db:migrate
 Finally, setup the admin user and role:
 rake wus:setup
 
+Oh and we also need to setup some languages for users to pick from:
+rake wus:setup_languages
+
 So basically if you're brand new to the application then paste this into the terminal window:
 rake wus:create
 rake db:migrate
@@ -28,6 +31,7 @@ rake wus:demolish
 rake wus:create
 rake db:migrate
 rake wus:setup
+rake wus:setup_languages
 
 If you've got a good working app and just wanna get up to date with the latest set of migrations then you can simply do:
 rake db:migrate
