@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  
+
   # For ajax calls to update the chat window
   map.update_chat_window '/chats/:chat_id/update_chat_window', :controller => "chats", :action => "update_chat_window"
  
@@ -21,7 +21,13 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :profiles
   map.resources :messages
   map.resources :chats
+  map.resources :buddies
+  map.resources :buddy_groups
   map.resources :languages
+  
+  # Named Routes
+  map.chat_with_user '/chats/with_user/:user_id', :controller => 'chats', :action => 'create'
+  map.dashboard '/dashboard', :controller => 'dashboard', :action => 'index'
   
   # Home Page
   map.root :controller => 'sessions', :action => 'new'

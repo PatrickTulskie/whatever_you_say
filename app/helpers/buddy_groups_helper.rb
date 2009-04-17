@@ -1,0 +1,2 @@
+module BuddyGroupsHelper
+end
