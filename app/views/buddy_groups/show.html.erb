@@ -1,0 +1,13 @@
+<p>
+  <b>User:</b>
+  <%=h @buddy_group.user.login %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @buddy_group.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_buddy_group_path(@buddy_group) %> |
+<%= link_to 'Back', buddy_groups_path %>
