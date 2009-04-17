@@ -50,7 +50,7 @@ class BuddiesController < ApplicationController
     respond_to do |format|
       if @buddy.save
         flash[:notice] = 'Buddy was successfully created.'
-        format.html { redirect_to dashboards_path }
+        format.html { redirect_to dashboard_path }
         format.xml  { render :xml => @buddy, :status => :created, :location => @buddy }
       else
         format.html { render :action => "new" }
