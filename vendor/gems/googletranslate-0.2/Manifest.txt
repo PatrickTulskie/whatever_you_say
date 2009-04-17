@@ -1,0 +1,9 @@
+MIT-LICENSE
+Manifest.txt
+README
+Rakefile
+bin/rtranslate
+lib/rtranslate.rb
+lib/rtranslate/language.rb
+lib/rtranslate/rtranslate.rb
+tests/ts_translate.rb

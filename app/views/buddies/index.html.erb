@@ -1,0 +1,21 @@
+<h1>Buddies</h1>
+
+<% @buddy_groups.each do |group| %>
+	<h2><%= group.name.titleize %></h2>
+	<table>
+	<% group.buddies.each do |buddy| %>
+	  <tr>
+	    <td><%=h buddy.user.login %></td>
+			<td><%= link_to 'Chat', chat_with_user_path(buddy.user) %></td>
+	    <td><%= link_to 'Profile', profile_path(buddy.user.profile) %></td>
+	    <td><%= link_to 'Edit', edit_buddy_path(buddy) %></td>
+	    <td><%= link_to 'Destroy', buddy, :confirm => 'Are you sure?', :method => :delete %></td>
+	  </tr>
+	<% end %>
+	</table>
+<% end %>
+
+<br />
+
+<%= link_to 'New Buddy', new_buddy_path %>
+<%= link_to 'New Buddy Group', new_buddy_group_path %>

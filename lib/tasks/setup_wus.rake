@@ -1,4 +1,5 @@
 require 'google_translate'
+
 namespace :wus do
   
   desc "Setup the application."
@@ -37,11 +38,19 @@ namespace :wus do
   
   desc "Import the Languages"
   task :setup_languages => :environment do
+    puts "Importing from shvet-google_translate"
     g = Google::Translator.new
     g.supported_languages[:from_languages].each do |lang|
       l = Language.find_or_create_by_name_and_short_name(lang.name, lang.code)
       l.save
       puts "Imported #{lang.name}."
+    end
+    puts "---------------------------------------"
+    puts "Importing from regular google translate"
+    google_translate_gem_languages.each do |lang|
+      l = Language.find_or_create_by_name_and_short_name(lang[:name], lang[:short_name])
+      l.save
+      puts "Imported #{l.name}"
     end
   end
     
@@ -49,4 +58,9 @@ end
 
 def load_db
   YAML.load(File.open(File.dirname(__FILE__)+'/../../config/database.yml', 'r').read)[RAILS_ENV]
+end
+
+def google_translate_gem_languages
+  require 'rtranslate'
+  Translate::GoogleLanguage.constants.reject{|c| c=="AVAILABLE_PAIR"}.map{ |c| {:name => c.titleize, :short_name => Translate::GoogleLanguage.const_get(c.to_sym)} }
 end

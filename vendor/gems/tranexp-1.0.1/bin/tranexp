@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+#
+#  Created on 2008-4-16.
+#  Copyright (c) 2008. All rights reserved.
+
+require File.dirname(__FILE__) + "/../lib/tranexp"
+require "tranexp/command"
+
+puts Tranexp::Command.run(STDIN.read, *ARGV)

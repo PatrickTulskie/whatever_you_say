@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+      tranexp
+  </title>
+  <script src="javascripts/rounded_corners_lite.inc.js" type="text/javascript"></script>
+<style>
+
+</style>
+  <script type="text/javascript">
+    window.onload = function() {
+      settings = {
+          tl: { radius: 10 },
+          tr: { radius: 10 },
+          bl: { radius: 10 },
+          br: { radius: 10 },
+          antiAlias: true,
+          autoPad: true,
+          validTags: ["div"]
+      }
+      var versionBox = new curvyCorners(settings, document.getElementById("version"));
+      versionBox.applyCornersToAll();
+    }
+  </script>
+</head>
+<body>
+<div id="main">
+
+    <h1>tranexp</h1>
+    <div id="version" class="clickable" onclick='document.location = "http://rubyforge.org/projects/tranexp"; return false'>
+      <p>Get Version</p>
+      <a href="http://rubyforge.org/projects/tranexp" class="numbers">1.0.1</a>
+    </div>
+    <h1>&#x2192; &#8216;tranexp nor eng&#8217;</h1>
+
+
+	<h2>What</h2>
+
+
+	<p>Translates words or phrases from one language to another, using 
+<a href="http://www.tranexp.com:2000/Translate/result.shtml">tranexp website</a></p>
+
+
+	<h2>Installing</h2>
+
+
+	<p><pre class='syntax'><span class="ident">sudo</span> <span class="ident">gem</span> <span class="ident">install</span> <span class="ident">tranexp</span></pre></p>
+
+
+	<h2>The basics</h2>
+
+
+	<p>Has a command-line and <span class="caps">API</span>.</p>
+
+
+	<h3>Command Line</h3>
+
+
+	<p>To translate some text from Danish to English:</p>
+
+
+<pre>cat some_danish_text.txt | tranexp dan eng
+
+echo "jeg ville like en flaske vin" | tranexp nor
+I would like a bottle of wine
+</pre>
+
+	<p>That is, you pass the input text via <span class="caps">STDIN</span>. The default target language is English (&#8216;eng&#8217;).</p>
+
+
+	<h3><span class="caps">API</span></h3>
+
+
+	<p>To translate some text from English to Norwegian:</p>
+
+
+	<p><pre class='syntax'><span class="ident">translate</span> <span class="punct">=</span> <span class="constant">Tranexp</span><span class="punct">::</span><span class="constant">Http</span><span class="punct">.</span><span class="ident">new</span>
+<span class="ident">english</span> <span class="punct">=</span> <span class="ident">translate</span><span class="punct">.</span><span class="ident">translate</span><span class="punct">(&quot;</span><span class="string">metoder</span><span class="punct">&quot;,</span> <span class="constant">Tranexp</span><span class="punct">::</span><span class="constant">Http</span><span class="punct">::</span><span class="constant">Norwegian</span><span class="punct">,</span> <span class="constant">Tranexp</span><span class="punct">::</span><span class="constant">Http</span><span class="punct">::</span><span class="constant">English</span><span class="punct">)</span>
+<span class="ident">english</span> <span class="punct">=</span> <span class="ident">translate</span><span class="punct">.</span><span class="ident">translate</span><span class="punct">(&quot;</span><span class="string">metoder</span><span class="punct">&quot;,</span> <span class="punct">&quot;</span><span class="string">nor</span><span class="punct">&quot;,</span> <span class="punct">&quot;</span><span class="string">eng</span><span class="punct">&quot;)</span>
+</pre></p>
+
+
+	<p>Or use the dynamic helper:</p>
+
+
+	<p><pre class='syntax'><span class="ident">translate</span><span class="punct">.</span><span class="ident">from_nor_to_eng</span><span class="punct">(&quot;</span><span class="string">metoder</span><span class="punct">&quot;)</span>
+</pre></p>
+
+
+	<h2>Translations</h2>
+
+
+	<p>Tranexp supports translations between the following languages:</p>
+
+
+	<p><pre class='syntax'><span class="punct">{</span>
+  <span class="punct">&quot;</span><span class="string">English</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">eng</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">BrazilianPortuguese</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">pob</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">Bulgarian</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">bul</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">Croatian</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">cro</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">Czech</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">che</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">Danish</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">dan</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">Dutch</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">dut</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">Spanish</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">spa</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">Finnish</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">fin</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">French</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">fre</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">German</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">ger</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">Greek</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">grk</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">Hungarian</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">hun</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">Icelandic</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">ice</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">Italian</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">ita</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">Japanese</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">jpn</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">Latin American Spanish</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">spl</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">Norwegian</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">nor</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">Filipino</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">tag</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">Polish</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">pol</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">Portuguese</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">poe</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">Romanian</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">rom</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">Russian</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">rus</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">Serbian</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">sel</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">Slovenian</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">slo</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">Swedish</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">swe</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">Welsh</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">wel</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">Turkish</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">tur</span><span class="punct">&quot;,</span>
+  <span class="punct">&quot;</span><span class="string">Latin</span><span class="punct">&quot;</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">ltt</span><span class="punct">&quot;</span>
+<span class="punct">}</span></pre></p>
+
+
+	<h2>Forum</h2>
+
+
+	<p><a href="http://groups.google.com/group/drnicutilities">http://groups.google.com/group/drnicutilities</a></p>
+
+
+	<h2>How to submit patches</h2>
+
+
+	<p>Read the <a href="http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/">8 steps for fixing other people&#8217;s code</a> and for section <a href="http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/#8b-google-groups">8b: Submit patch to Google Groups</a>, use the Google Group above.</p>
+
+
+	<p>You can fetch the source from either:</p>
+
+
+	<ul>
+	<li>github: <a href="http://github.com/drnic/tranexp/tree/master">http://github.com/drnic/tranexp/tree/master</a></li>
+	</ul>
+
+
+<pre>git clone git://github.com/drnic/tranexp.git
+cd tranexp
+rake test
+rake install_gem
+</pre>
+
+	<ul>
+	<li>rubyforge: <a href="http://rubyforge.org/scm/?group_id=6064">http://rubyforge.org/scm/?group_id=6064</a></li>
+	</ul>
+
+
+<pre>git clone git://rubyforge.org/tranexp.git
+cd tranexp
+rake test
+rake install_gem
+</pre>
+
+	<h2>License</h2>
+
+
+	<p>This code is free to use under the terms of the <span class="caps">MIT</span> license.</p>
+
+
+	<h2>Contact</h2>
+
+
+	<p>Comments are welcome. Send an email to <a href="mailto:drnicwilliams@gmail.com">Dr Nic Williams</a> via the <a href="http://groups.google.com/group/drnicutilities">forum</a></p>
+    <p class="coda">
+      <a href="drnicwilliams@gmail.com">Dr Nic Williams</a>, 16th April 2008<br>
+      Theme extended from <a href="http://rb2js.rubyforge.org/">Paul Battley</a>
+    </p>
+</div>
+
+<!-- insert site tracking codes here, like Google Urchin -->
+
+</body>
+</html>

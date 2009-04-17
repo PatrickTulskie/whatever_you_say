@@ -49,7 +49,7 @@ class SessionsController < ApplicationController
   def successful_login
     new_cookie_flag = (params[:remember_me] == "1")
     handle_remember_cookie! new_cookie_flag
-    redirect_back_or_default(chats_path)
+    redirect_back_or_default(dashboard_path)
     flash[:notice] = "Welcome #{params[:login]}! You're logged in on #{Time.now.to_s(:long)}"
   end
 

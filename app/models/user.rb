@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
   # has_one :language, :through => :languages_users
   has_one :profile
   has_one :language, :through => :profile
+  has_many :buddy_groups
+  has_many :chats
   
   # Actions
   after_create :create_profile
@@ -58,6 +60,10 @@ class User < ActiveRecord::Base
   def password_required?
     new_record? ? not_using_openid? && (crypted_password.blank? || !password.blank?) : !password.blank?
   end
+  
+  def buddies
+    self.buddy_groups.map{|group| group.buddies }.flatten
+  end  
 
   protected
     

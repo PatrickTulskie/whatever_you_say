@@ -1,0 +1,20 @@
+<h1>Editing buddy</h1>
+
+<% form_for(@buddy) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :buddy_group_id %><br />
+    <%= f.text_field :buddy_group_id %>
+  </p>
+  <p>
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @buddy %> |
+<%= link_to 'Back', buddies_path %>

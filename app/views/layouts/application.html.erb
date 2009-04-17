@@ -17,17 +17,14 @@
 		<div id="wrap">
 		<%= render :partial => 'shared/wus_header' %>
 	    <ul id="nav">
-	      <li><a href="#">Home</a></li>
-	      <li><a href="#">About us</a></li>
-	      <li> <% if logged_in? %>
-			<%= link_to 'Chats', chats_path %> 
-			<%= link_to 'Profile', edit_profile_path(User.find(session[:user_id]).profile || 0) %> 
-			<%= link_to 'Logout', logout_path %>
-			<% else %>
-			<%= link_to 'Signup', signup_path %>
-			<% end %>
-			
-		  </li>
+	      <li><%= link_to "Dashboard", dashboard_path %></li>
+				<% if logged_in? %>
+				<li><%= link_to 'Chats', chats_path %> </li>
+				<li><%= link_to 'Profile', edit_profile_path(User.find(session[:user_id]).profile || 0) %></li>
+				<li><%= link_to 'Logout', logout_path %></li>
+				<% else %>
+				<li><%= link_to 'Signup', signup_path %></li>
+				<% end %>
 	    </ul>
 
 			<div id="content">

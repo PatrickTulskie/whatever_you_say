@@ -9,7 +9,7 @@ autorequire:
 bindir: bin
 cert_chain: []
 
-date: 2008-07-08 00:00:00 +01:00
+date: 2008-07-07 19:00:00 -04:00
 default_executable: 
 dependencies: []
 
@@ -50,6 +50,7 @@ rdoc_options:
 - --title
 - AASM
 require_paths: 
+- bin
 - lib
 required_ruby_version: !ruby/object:Gem::Requirement 
   requirements: 
@@ -66,7 +67,7 @@ required_rubygems_version: !ruby/object:Gem::Requirement
 requirements: []
 
 rubyforge_project: 
-rubygems_version: 1.2.0
+rubygems_version: 1.3.1
 signing_key: 
 specification_version: 2
 summary: State machine mixin for Ruby objects

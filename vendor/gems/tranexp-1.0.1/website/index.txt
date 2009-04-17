@@ -1,0 +1,113 @@
+h1. tranexp
+
+h1. &#x2192; 'tranexp nor eng'
+
+h2. What
+
+Translates words or phrases from one language to another, using 
+"tranexp website":http://www.tranexp.com:2000/Translate/result.shtml
+
+h2. Installing
+
+<pre syntax="ruby">sudo gem install tranexp</pre>
+
+h2. The basics
+
+Has a command-line and API.
+
+h3. Command Line
+
+To translate some text from Danish to English:
+
+<pre>cat some_danish_text.txt | tranexp dan eng
+
+echo "jeg ville like en flaske vin" | tranexp nor
+I would like a bottle of wine
+</pre>
+
+That is, you pass the input text via STDIN. The default target language is English ('eng').
+
+h3. API
+
+To translate some text from English to Norwegian:
+
+<pre syntax="ruby">translate = Tranexp::Http.new
+english = translate.translate("metoder", Tranexp::Http::Norwegian, Tranexp::Http::English)
+english = translate.translate("metoder", "nor", "eng")
+</pre>
+    
+Or use the dynamic helper:
+  
+<pre syntax="ruby">translate.from_nor_to_eng("metoder")
+</pre>
+
+h2. Translations
+
+Tranexp supports translations between the following languages:
+
+<pre syntax="ruby">{
+  "English" => "eng",
+  "BrazilianPortuguese" => "pob",
+  "Bulgarian" => "bul",
+  "Croatian" => "cro",
+  "Czech" => "che",
+  "Danish" => "dan",
+  "Dutch" => "dut",
+  "Spanish" => "spa",
+  "Finnish" => "fin",
+  "French" => "fre",
+  "German" => "ger",
+  "Greek" => "grk",
+  "Hungarian" => "hun",
+  "Icelandic" => "ice",
+  "Italian" => "ita",
+  "Japanese" => "jpn",
+  "Latin American Spanish" => "spl",
+  "Norwegian" => "nor",
+  "Filipino" => "tag",
+  "Polish" => "pol",
+  "Portuguese" => "poe",
+  "Romanian" => "rom",
+  "Russian" => "rus",
+  "Serbian" => "sel",
+  "Slovenian" => "slo",
+  "Swedish" => "swe",
+  "Welsh" => "wel",
+  "Turkish" => "tur",
+  "Latin" => "ltt"
+}</pre>
+
+h2. Forum
+
+"http://groups.google.com/group/drnicutilities":http://groups.google.com/group/drnicutilities
+
+h2. How to submit patches
+
+Read the "8 steps for fixing other people's code":http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/ and for section "8b: Submit patch to Google Groups":http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/#8b-google-groups, use the Google Group above.
+
+You can fetch the source from either:
+
+* github: "http://github.com/drnic/tranexp/tree/master":http://github.com/drnic/tranexp/tree/master
+
+<pre>git clone git://github.com/drnic/tranexp.git
+cd tranexp
+rake test
+rake install_gem
+</pre>
+
+* rubyforge: "http://rubyforge.org/scm/?group_id=6064":http://rubyforge.org/scm/?group_id=6064
+
+<pre>git clone git://rubyforge.org/tranexp.git
+cd tranexp
+rake test
+rake install_gem
+</pre>
+
+h2. License
+
+This code is free to use under the terms of the MIT license. 
+
+h2. Contact
+
+Comments are welcome. Send an email to "Dr Nic Williams":mailto:drnicwilliams@gmail.com via the "forum":http://groups.google.com/group/drnicutilities
+
