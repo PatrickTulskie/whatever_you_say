@@ -62,5 +62,5 @@ end
 
 def google_translate_gem_languages
   require 'rtranslate'
-  Translate::Language.constants.reject{|c| c=="AVAILABLE_PAIR"}.map{ |c| {:name => c.titleize, :short_name => Translate::Language.const_get(c.to_sym)} }
+  Translate::GoogleLanguage.constants.reject{|c| c=="AVAILABLE_PAIR"}.map{ |c| {:name => c.titleize, :short_name => Translate::GoogleLanguage.const_get(c.to_sym)} }
 end
