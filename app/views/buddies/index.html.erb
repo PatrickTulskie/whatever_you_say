@@ -1,8 +1,10 @@
-<h1>Buddies</h1>
+<br>
+<center>
+<h2>Buddies</h2>
 
 <% @buddy_groups.each do |group| %>
 	<h2><%= group.name.titleize %></h2>
-	<table>
+	<table align="center" width="500" bgcolor="#CCCCCC">
 	<% group.buddies.each do |buddy| %>
 	  <tr>
 	    <td><%=h buddy.user.login %></td>
@@ -19,3 +21,4 @@
 
 <%= link_to 'New Buddy', new_buddy_path %>
 <%= link_to 'New Buddy Group', new_buddy_group_path %>
+</center>

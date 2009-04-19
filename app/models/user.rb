@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   # has_and_belongs_to_many :languages
   # has_one :languages_users
   # has_one :language, :through => :languages_users
-  has_one :profile
+  has_one :profile, :dependent => :destroy
   has_one :language, :through => :profile
   has_many :buddy_groups
   has_many :chats

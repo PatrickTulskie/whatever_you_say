@@ -1,6 +1,9 @@
 class BuddyGroupsController < ApplicationController
   # GET /buddy_groups
   # GET /buddy_groups.xml
+  
+  layout 'logged_in'
+  
   def index
     @buddy_groups = BuddyGroup.all
 

@@ -1,13 +1,17 @@
-<h1>Listing languages</h1>
+<br>
+<center>
+<h2>Languages List</h2><br>
+<table align="center" width="500" bgcolor="#CCCCCC">
 
-<table>
   <tr>
+    <th>ID</th>
     <th>Name</th>
-    <th>Short name</th>
+    <th>Short Name</th>
   </tr>
 
 <% @languages.each do |language| %>
   <tr>
+    <td><%=h language.id %></td>
     <td><%=h language.name %></td>
     <td><%=h language.short_name %></td>
     <td><%= link_to 'Show', language %></td>
@@ -20,3 +24,4 @@
 <br />
 
 <%= link_to 'New language', new_language_path %>
+</center>

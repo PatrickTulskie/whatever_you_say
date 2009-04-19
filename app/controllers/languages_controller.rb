@@ -1,6 +1,9 @@
 class LanguagesController < ApplicationController
   # GET /languages
   # GET /languages.xml
+  
+  layout 'logged_in'
+  
   def index
     @languages = Language.all
 

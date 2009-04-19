@@ -17,18 +17,33 @@
 		<div id="wrap">
 		<%= render :partial => 'shared/wus_header' %>
 	    <ul id="nav">
-	      <li><%= link_to "Dashboard", dashboard_path %></li>
+	            <li><%= link_to "Dashboard", dashboard_path %></li>
 				<% if logged_in? %>
 				<li><%= link_to 'Chats', chats_path %> </li>
-				<li><%= link_to 'Profile', edit_profile_path(User.find(session[:user_id]).profile || 0) %></li>
-				<li><%= link_to 'Logout', logout_path %></li>
+				<li><%= link_to 'Profile', profile_path(User.find(session[:user_id]).profile || 0) %></li>
+				
+				<!--Admin categories-->
+				
+				<li2><%= link_to 'Logout', logout_path %></li2>
+				<% if User.find(session[:user_id]).has_role?(:admin) %>
+				<li2><%= link_to 'Users List', users_path %></li2>
+				<li2><%= link_to 'Languages List', languages_path %></li2>
+				<% end %>
+							
+			
 				<% else %>
 				<li><%= link_to 'Signup', signup_path %></li>
 				<% end %>
+				
 	    </ul>
 
 			<div id="content">
-				<%= flash_messages %>
+				<% if flash[:notice] -%>
+			    <div id="notice" align='center'><%= flash[:notice] %></div>
+			  <% end -%>
+			  <script type="text/javascript">
+			    setTimeout("new Effect.Fade('notice');", 6000)
+			  </script>
 				<%= yield :layout %>
 			</div>
 
