@@ -32,7 +32,7 @@ class PasswordsController < ApplicationController
       flash[:notice] = 'Password was successfully updated.'
       redirect_to login_path
     else
-      flash[:notice] = 'EPIC FAIL!'
+      flash[:notice] = 'Password was less 8 characters or the confirmation did not match.'
       redirect_to :action => :reset, :reset_code => params[:reset_code]
     end
   end

@@ -19,12 +19,12 @@ class User < ActiveRecord::Base
   validates_format_of :email, :with => RE_EMAIL_OK, :message => MSG_EMAIL_BAD, :if => :not_using_openid?
   validates_uniqueness_of :identity_url, :unless => :not_using_openid?
   validate :normalize_identity_url
+  validates_confirmation_of :password
+  validates_presence_of     :password_confirmation,      :if => :password_required?
+  validates_length_of       :password, :within => 8..40, :if => :password_required?
   
   # Relationships
   has_and_belongs_to_many :roles
-  # has_and_belongs_to_many :languages
-  # has_one :languages_users
-  # has_one :language, :through => :languages_users
   has_one :profile, :dependent => :destroy
   has_one :language, :through => :profile
   has_many :buddy_groups
