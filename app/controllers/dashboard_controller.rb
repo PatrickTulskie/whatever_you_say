@@ -4,7 +4,7 @@ class DashboardController < ApplicationController
   
   def index
     @user = User.find(session[:user_id])
-    @chats = @user.chats
+    @chats = Chat.find_all_by_member(@user)
     @buddy_groups = @user.buddy_groups
   end  
   

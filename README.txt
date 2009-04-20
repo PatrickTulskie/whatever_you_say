@@ -2,8 +2,8 @@ About:
 This app is currently under very active development.  All of this is subject to change at any time.
 
 Requirements:
-sudo gem install shvets-google_translate
 sudo gem install rails -v=2.3.2
+sudo rake gems:install
 
 Getting the app setup:
 If you already have the application running on your machine, and you want to start over from scratch then run:
