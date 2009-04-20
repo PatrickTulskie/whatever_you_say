@@ -4,6 +4,8 @@ class BuddiesController < ApplicationController
   
   before_filter :get_logged_in_user
   
+  layout 'logged_in'
+  
   def index
     @buddy_groups = @user.buddy_groups
     @buddies = @user.buddies

@@ -1,5 +1,9 @@
-<h1>New buddy_group</h1>
+<br>
+<center>
+<h2>New Buddy Group</h2>
 
+<div class="centerFieldset">
+<fieldset style="width: 400px">
 <% form_for(@buddy_group) do |f| %>
   <%= f.error_messages %>
 
@@ -15,4 +19,7 @@
   </p>
 <% end %>
 
-<%= link_to 'Back', buddy_groups_path %>
+<%= link_to 'Back', dashboard_path %>
+</div>
+</fieldset>
+</center>

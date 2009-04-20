@@ -1,6 +1,6 @@
 <h1>Dashboard</h1>
 <h2>Currently Active Chats</h2><br />
-<table width="200" bgcolor="#CCCCCC">
+<table width="300" bgcolor="#CCCCCC">
 <% for chat in @chats %>
   <tr>
     <td><%= !session[:user_id].nil? ? (chat.user_id == session[:user_id] ? chat.receiver.login : chat.user.login) : "#{chat.user.login} > #{chat.receiver.login}" %></td>

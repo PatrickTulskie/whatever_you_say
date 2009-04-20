@@ -37,7 +37,7 @@ a:hover {
 .float-l {
 	float:left
 }
-.folat-r {
+.float-r {
 	float:right
 }
 .clearfix {
@@ -59,13 +59,31 @@ ul#nav {
 }
 ul#nav li {
 	display:inline;
+	float:left;
 }
+
+ul#nav li2{
+	display:inline;
+	float:right;
+	
+}
+
 ul#nav a {
 	color:#FFFFFF;
 	line-height:43px;
 	padding:0 10px;
 	border-right:#FFFFFF 1px solid;
 }
+
+
+ul#nav li a:hover {
+	background-color: green;
+}
+
+ul#nav li2 a:hover {
+	background-color: green;
+}
+
 #logo {
 	position:absolute;
 	top:40px;
@@ -106,7 +124,7 @@ label {
 }
 
 #content {
-	height:540px;
+	min-height:540px;
 	background:#FFFFFF
 }
 #content .left {
@@ -122,11 +140,16 @@ label {
 #content .left a {
 	color:#336633
 }
+#content .left li{
+	color:black;
+	font-weight:bold;
+}
+
 #content .right {
 	width:345px;
 	background:#FFFFFF url(images/r.gif) no-repeat;
 	border-left:#403f40 1px solid;
-	height:540px;s
+	min-height:540px;
 }
 #side #top {
 	background:url(images/g_top.gif);

@@ -1,8 +1,8 @@
 <br>
 <center>
-<h2>Listing profiles</h2>
+<h2>Listing profiles</h2><br>
 
-<table>
+<table align="center" width="500" bgcolor="#CCCCCC">
   <tr>
     <th>Username</th>
     <th>First name</th>
@@ -15,7 +15,7 @@
     <td><%= profile.user.nil? ? "Profile is an orphan." : profile.user.login %></td>
     <td><%=h profile.first_name %></td>
     <td><%=h profile.last_name %></td>
-    <td><%=h profile.language_id %></td>
+    <td><%=h profile.language.name %></td>
     <td><%= link_to 'Show', profile %></td>
     <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
     <td><%= link_to 'Destroy', profile, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -23,12 +23,9 @@
   
 <% end %>
 
-<tr>
-<td><%= link_to 'New profile', new_profile_path %></td>
-</tr>
 </table>
 
 <br />
-
+<%= link_to 'New profile', new_profile_path %>
 
 </center>

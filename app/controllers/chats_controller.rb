@@ -55,7 +55,7 @@ class ChatsController < ApplicationController
 
     respond_to do |format|
       if @chat.save
-        flash[:notice] = 'Chat was successfully created.'
+        flash[:notice] = 'Chat session has started.'
         format.html { redirect_to(@chat) }
         format.xml  { render :xml => @chat, :status => :created, :location => @chat }
       else
