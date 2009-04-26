@@ -1,0 +1,70 @@
+#!/usr/bin/env ruby
+
+$:.unshift(File::join(File::dirname(File::dirname(__FILE__)), "lib"))
+
+require 'rubygems' unless RUBY_VERSION =~ /1.9.*/
+require 'google_translate'
+
+#$KCODE='u'
+
+class Translate
+  USAGE= <<-TEXT
+    Usage:
+      translate list                 - displays the list of supported languages
+      translate detect "hello world" - detects language of text
+      translate en:ru "hello world"  - translates from en to ru
+      translate ru "hello world"     - translated from auto-detected language to ru 
+  TEXT
+
+  def initialize
+    @translator = Google::Translator.new
+  end
+
+  def print_languages list, title
+    puts title
+    puts list.join(', ')
+  end
+
+  def display text
+    if RUBY_PLATFORM =~ /mswin32/
+      File.open("temp.txt", "w") {|f| f.write text }
+      %x[notepad temp.txt] 
+    else
+      puts text
+    end
+  end
+
+  def run
+    if(ARGV.size == 0)
+      puts USAGE and return
+    end
+
+    case ARGV.shift
+
+    when 'list' then
+      hash = @translator.supported_languages
+
+      print_languages hash[:from_languages], "From Languages:"
+      print_languages hash[:to_languages], "To Languages:"
+    when 'detect' then
+      language = @translator.detect_language(ARGV.shift)
+
+      puts "Language: #{language.inspect}"
+    when /(..):(..)/ then
+      from_text = ARGV.join(' ')
+      from = $1
+      to = $2
+
+      display(@translator.translate(from.to_sym, to.to_sym, from_text))
+    when /(..)/ then
+      from_text = ARGV.join(' ')
+
+      from = @translator.detect_language(from_text)['language']
+      to = $1
+
+      display(@translator.translate(from.to_sym, to.to_sym, from_text))
+    end
+  end
+end
+
+Translate.new.run

@@ -1,3 +1,7 @@
+require 'google_translate'
+require 'rtranslate'
+require 'tranexp'
+
 class WusTranslate
       
   def translate_text(text, destination, source="en")
@@ -18,7 +22,6 @@ class WusTranslate
   private
   
   def translate_with_shvet_google_translate(text, source, destination)
-    require 'google_translate'
     result = text
     begin
       shvet_google = Google::Translator.new
@@ -31,7 +34,6 @@ class WusTranslate
   end  
   
   def translate_with_google_translate(text, source, destination)
-    require 'rtranslate'
     result = text
     begin
       result = Translate.t(text, source, destination)
@@ -43,7 +45,6 @@ class WusTranslate
   end
   
   def translate_with_tranexp(text, source, destination)
-    require 'tranexp'
     result = text
     begin
       tran_source = eval("Tranexp::Http::#{Language.find_by_short_name(source).name}")
