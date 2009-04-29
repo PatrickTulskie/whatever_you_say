@@ -41,6 +41,8 @@ files:
 - doc/jamis.rb
 has_rdoc: true
 homepage: http://github.com/rubyist/aasm
+licenses: []
+
 post_install_message: 
 rdoc_options: 
 - --line-numbers
@@ -50,6 +52,7 @@ rdoc_options:
 - --title
 - AASM
 require_paths: 
+- bin
 - bin
 - lib
 required_ruby_version: !ruby/object:Gem::Requirement 
@@ -67,7 +70,7 @@ required_rubygems_version: !ruby/object:Gem::Requirement
 requirements: []
 
 rubyforge_project: 
-rubygems_version: 1.3.1
+rubygems_version: 1.3.2
 signing_key: 
 specification_version: 2
 summary: State machine mixin for Ruby objects

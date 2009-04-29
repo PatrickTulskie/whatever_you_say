@@ -48,6 +48,8 @@ files:
 - capistrano-ext.gemspec
 has_rdoc: true
 homepage: http://www.capify.org
+licenses: []
+
 post_install_message: 
 rdoc_options: 
 - --line-numbers
@@ -57,6 +59,7 @@ rdoc_options:
 - --main
 - README
 require_paths: 
+- bin
 - bin
 - bin
 - lib
@@ -75,7 +78,7 @@ required_rubygems_version: !ruby/object:Gem::Requirement
 requirements: []
 
 rubyforge_project: capistrano-ext
-rubygems_version: 1.3.1
+rubygems_version: 1.3.2
 signing_key: 
 specification_version: 2
 summary: Useful task libraries and methods for Capistrano

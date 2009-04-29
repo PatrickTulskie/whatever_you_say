@@ -26,7 +26,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :languages
   
   # Named Routes
-  map.chat_with_user '/chats/with_user/:user_id', :controller => 'chats', :action => 'create'
+  map.chat_with_user '/chats/with_user/:receiver_id', :controller => 'chats', :action => 'create'
   map.dashboard '/dashboard', :controller => 'dashboard', :action => 'index'
   
   # Home Page

@@ -63,7 +63,25 @@ class User < ActiveRecord::Base
   
   def buddies
     self.buddy_groups.map{|group| group.buddies }.flatten
+  end
+  
+  def all_chats
+    Chat.find_all_by_member(self.id)
+  end
+  
+  def current_chats
+    all_chats.reject{ |chat| chat.details_for(self)[:closed] == true }
   end  
+    
+  def chat_with_user(user)
+    answer = nil
+    self.all_chats.each do |chat|
+      if (chat.user == self && chat.receiver == user) || (chat.receiver == self && chat.user == self)
+        answer = chat
+      end
+    end
+    return answer
+  end
 
   protected
     

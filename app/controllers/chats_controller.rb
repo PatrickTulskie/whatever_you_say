@@ -21,7 +21,7 @@ class ChatsController < ApplicationController
   # GET /chats/1.xml
   def show
     @chat = Chat.find(params[:id])
-    @user = User.find(session[:user_id])
+    @user = current_user
     @receiver = @chat.receiver
     @message = Message.new
     @chat.mark_all_read(session[:user_id])
@@ -51,7 +51,10 @@ class ChatsController < ApplicationController
   # POST /chats
   # POST /chats.xml
   def create
-    @chat = Chat.new(params[:chat])
+    # @chat = Chat.new(params[:chat])
+    params[:user_id] = current_user.id
+    # pretty_params and return
+    @chat = Chat.new_between_participants(params)
 
     respond_to do |format|
       if @chat.save
@@ -86,11 +89,14 @@ class ChatsController < ApplicationController
   # DELETE /chats/1.xml
   def destroy
     @chat = Chat.find(params[:id])
-    @chat.destroy
+    # Don't destroy chats when there is more than one participant.
+    # @chat.destroy
+    @chat.close_for(current_user)
 
     respond_to do |format|
-      format.html { redirect_to(chats_url) }
+      format.html { redirect_to(dashboard_path) }
       format.xml  { head :ok }
+      format.js   { render :text => "Chat ended." }
     end
   end
   

@@ -19,5 +19,9 @@ class ApplicationController < ActionController::Base
     @user = User.find(session[:user_id])
   end  
   
+  def pretty_params
+    render :text => "<pre>#{params.to_yaml}</pre>"
+  end  
+  
 end
 

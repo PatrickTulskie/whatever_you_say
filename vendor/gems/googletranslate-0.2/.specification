@@ -51,6 +51,8 @@ files:
 - tests/ts_translate.rb
 has_rdoc: true
 homepage: http://sishen.lifegoo.com
+licenses: []
+
 post_install_message: 
 rdoc_options: 
 - --main
@@ -72,7 +74,7 @@ required_rubygems_version: !ruby/object:Gem::Requirement
 requirements: []
 
 rubyforge_project: googletranslate
-rubygems_version: 1.3.1
+rubygems_version: 1.3.2
 signing_key: 
 specification_version: 1
 summary: Google translate ruby client api

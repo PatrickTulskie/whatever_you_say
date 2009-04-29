@@ -33,7 +33,9 @@
 		}
 	});
 </script>
-<%= link_to "Back to Chats", chats_path %>
+<%= link_to "Back to Chats", chats_path %> | 
+<%= link_to 'End', @chat, :confirm => 'Are you sure you want to end this chat?', :method => :delete %>
+
 <%= periodically_call_remote( :url => update_chat_window_path(:chat_id => @chat.id),
 															:frequency => '3', 
 															:update => 'chat_table',

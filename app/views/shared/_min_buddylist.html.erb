@@ -1,0 +1,14 @@
+<h2><%= link_to "Buddies", buddies_path %></h2>
+<% buddy_groups.each do |group| %>
+	<% if group.buddies.length > 0 %>
+	<h3><%= group.name.titleize %></h3>
+		<table>
+		<% group.buddies.each do |buddy| %>
+		  <tr>
+				<td><%= link_to buddy.user.login, chat_with_user_path(buddy.user), :title => "Chat with #{buddy.user.login}" %></td>
+		    <td><%= link_to '&', profile_path(buddy.user.profile), :title => "View Buddy Profile (Replace this with an icon)." %></td>
+		  </tr>
+		<% end %>
+		</table>
+	<% end %>
+<% end %>
