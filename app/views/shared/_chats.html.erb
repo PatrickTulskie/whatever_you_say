@@ -1,8 +1,6 @@
 <div id="active_chats">
-	<strong>Current Chats: </strong>
+	<strong>Active Chats </strong>
 	<% for chat in chats %>
-		<%= link_to_unless_current chat.user_id == current_user.id ? chat.receiver.login : chat.user.login, chat %>
-		<%= chat.details_for(current_user)[:unread_count] != 0 ? "[#{chat.details_for(current_user)[:unread_count]}]" : '' %>
-		<%= " | " unless chat == chats.last %>
+		<%= link_to (chat.user_id == current_user.id ? chat.receiver.login : chat.user.login) + (chat.details_for(current_user)[:unread_count] != 0 ? "[#{chat.details_for(current_user)[:unread_count]}]" : ''), chat %>
 	<% end %>
 </div>

@@ -1,7 +1,130 @@
+/* @override 
+	http://whatever.local/stylesheets/base.css*
+	http://whatever.local/stylesheets/base.css?1241668842
+	http://whatever.local/stylesheets/base.css?1241668930
+	http://whatever.local/stylesheets/base.css
+*/
+
 body {
 	text-align:center;
 	background-color: #CCCCCC;
 	height:944px;
+}
+
+a img{
+	border: none;
+}
+
+div.index_actions {
+	float: right;
+	border: dashed grey 1px;
+	padding: 3px;
+}
+
+div#chats_panel {
+	padding: 10px;
+}
+
+div#chats_panel table{
+	margin-top: 10px;
+}
+
+div#chats_panel table tbody tr td{
+	padding-right: 8px;
+	padding-left: 5px;
+	font-size: 1.2em;
+	line-height: 1.7em;
+}
+
+div#buddies_panel table tbody tr:hover,
+div#chats_panel table tbody tr:hover,
+table tbody tr:hover{
+	background: lightblue;
+}
+
+#buddies_panel{
+	padding: 10px;
+}
+
+#buddies_panel h3{
+	font-size: 1.5em;
+	margin-top: 10px;
+}
+
+div#buddies_panel table tbody tr td{
+	padding-right: 8px;
+	padding-left: 5px;
+	font-size: 1.2em;
+	line-height: 1.7em;
+}
+
+div#dashboard_buddylist {
+	float: left;
+	width: 49%;
+	padding: 5px;
+	border-right: dashed lightgray 1px;
+}
+
+div#dashboard_stats {
+	float: right;
+	width: 49%;
+	color: black;
+	padding-top: 5px;
+}
+
+#dashboard_statistics_table tbody tr td {
+	color: black;
+	font-size: 1.1em;
+}
+
+#dashboard_statistics_table {
+	width: 100%;
+}
+
+div#active_chats {
+	padding-left: 4px;
+	border-bottom: 2px solid lightgray;
+	font-size: 1.1em;
+}
+
+#active_chats strong {
+	font-weight: bold;
+}
+
+#active_chats a{
+	display: inline-block;
+	margin-top: 3px;
+	margin-right: 5px;
+	background: lightgray;
+	padding: 4px;
+}
+
+#active_chats a:hover{
+	color: black;
+	background-color: lightblue;
+	text-decoration: none;
+}
+
+#dashboard_buddylist table {
+	width: 100%;
+}
+
+#dashboard_buddylist table tbody tr td {
+	padding: 3px;
+	font-size: 1.1em;
+}
+
+table tbody tr td a:hover {
+	background: none;
+	color: black;
+}
+
+#dashboard_buddylist table tbody tr td:hover {
+	background: lightblue;
+}
+
+table tbody tr.grey {
+	background: lightgray;
 }
 
 ol, ul, td {
@@ -69,15 +192,16 @@ ul#nav li2{
 }
 
 ul#nav a {
-	color:#FFFFFF;
-	line-height:43px;
-	padding:0 10px;
-	border-right:#FFFFFF 1px solid;
+	color: #FFFFFF;
+	line-height: 43px;
+	margin: 0 10px;
+	font-size: 1.3em;
 }
 
 
 ul#nav li a:hover {
 	background-color: green;
+	text-decoration: none;
 }
 
 ul#nav li2 a:hover {

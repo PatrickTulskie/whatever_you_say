@@ -9,7 +9,9 @@
 		<meta name="robots" content="all" />	
 		<meta name="resource-type" content="document" />
 		<meta name="MSSmartTagsPreventParsing" content="true" />
-		<%= stylesheet_link_tag 'base','reset'%>
+		<%= stylesheet_link_tag 'reset' %>
+		<%# stylesheet_link_tag 'base' %>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/base.css" />
 
 		<%= javascript_include_tag :defaults %>
 	</head>
@@ -22,10 +24,9 @@
 				<li><%= link_to 'Chats', chats_path %></li>
 				<li><%= link_to 'Buddies', buddies_path %></li>
 				<li><%= link_to 'Profile', profile_path(User.find(session[:user_id]).profile || 0) %></li>
+				<li2><%= link_to "Logout #{current_user.login}", logout_path %></li2>
 				
-				<!--Admin categories-->
-				
-				<li2><%= link_to 'Logout', logout_path %></li2>
+				<!--Admin categories-->				
 				<% if current_user.has_role?(:admin) %>
 				<li2><%= link_to 'Users List', users_path %></li2>
 				<li2><%= link_to 'Languages List', languages_path %></li2>

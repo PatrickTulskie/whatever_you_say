@@ -1,24 +1,19 @@
-<br>
-<center>
-<h2>Buddies</h2>
+<div id="buddies_panel">
+	<div class="index_actions"><%= link_to 'New Buddy', new_buddy_path %> | <%= link_to 'New Buddy Group', new_buddy_group_path %></div>
+	<h2>Buddies</h2>
 
-<% @buddy_groups.each do |group| %>
-	<h2><%= group.name.titleize %></h2>
-	<table align="center" width="500" bgcolor="#CCCCCC">
-	<% group.buddies.each do |buddy| %>
-	  <tr>
-	    <td><%=h buddy.user.login %></td>
-			<td><%= link_to 'Chat', chat_with_user_path(buddy.user) %></td>
-	    <td><%= link_to 'Profile', profile_path(buddy.user.profile) %></td>
-	    <td><%= link_to 'Edit', edit_buddy_path(buddy) %></td>
-	    <td><%= link_to 'Destroy', buddy, :confirm => 'Are you sure?', :method => :delete %></td>
-	  </tr>
+	<% @buddy_groups.each do |group| %>
+		<h3><%= group.name.titleize %></h3>
+		<table>
+		<% group.buddies.each do |buddy| %>
+		  <tr class='<%= cycle 'grey', 'white' %>'>
+		    <td><%=h buddy.user.login %></td>
+				<td><%= link_to image_tag('/images/comment_yellow.gif'), chat_with_user_path(buddy.user), :title => "Chat With Buddy" %></td>
+		    <td><%= link_to image_tag('/images/page_user.gif'), profile_path(buddy.user.profile), :title => "View Buddy Profile" %></td>
+		    <td><%= link_to image_tag('/images/list_users.gif'), edit_buddy_path(buddy), :title => "Edit Buddy" %></td>
+		    <td style="width:100%"><%= link_to image_tag('/images/action_stop.gif'), buddy, :confirm => 'Are you sure?', :method => :delete, :title => "Delete Buddy" %></td>
+		  </tr>
+		<% end %>
+		</table>
 	<% end %>
-	</table>
-<% end %>
-
-<br />
-
-<%= link_to 'New Buddy', new_buddy_path %>
-<%= link_to 'New Buddy Group', new_buddy_group_path %>
-</center>
+</div>

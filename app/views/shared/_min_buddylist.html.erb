@@ -3,10 +3,13 @@
 	<% if group.buddies.length > 0 %>
 	<h3><%= group.name.titleize %></h3>
 		<table>
-		<% group.buddies.each do |buddy| %>
-		  <tr>
-				<td><%= link_to buddy.user.login, chat_with_user_path(buddy.user), :title => "Chat with #{buddy.user.login}" %></td>
-		    <td><%= link_to '&', profile_path(buddy.user.profile), :title => "View Buddy Profile (Replace this with an icon)." %></td>
+		<% group.buddies.sort{ |a,b| a.user.login <=> b.user.login }.each do |buddy| %>
+		  <tr class='<%= cycle 'grey', 'white' %>'>
+				<td>
+					<%= link_to buddy.user.login, chat_with_user_path(buddy.user), :title => "Chat with #{buddy.user.login}" %>
+					<%= link_to image_tag('/images/comment_yellow.gif'), chat_with_user_path(buddy.user), :title => "Chat with #{buddy.user.login}" %>
+			    <%= link_to image_tag('/images/page_user.gif'), profile_path(buddy.user.profile), :title => "View Buddy Profile" %>
+				</td>
 		  </tr>
 		<% end %>
 		</table>

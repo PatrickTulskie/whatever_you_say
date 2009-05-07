@@ -1,1 +1,7 @@
-<%= render :partial => 'shared/min_buddylist', :locals => {:buddy_groups => @buddy_groups} %>
+<div id='dashboard_stats'>
+	<%= render :partial => 'analytics' %>
+</div>
+
+<div id='dashboard_buddylist'>
+	<%= render :partial => 'shared/min_buddylist', :locals => {:buddy_groups => @buddy_groups} %>
+</div>
