@@ -1,16 +1,18 @@
 <div class="edit_panel">
-	<h1>Editing buddy</h1>
+	<div class="center_me">
+		<h1>Editing <%= @buddy.user.login %></h1>
 
-	<% form_for(@buddy) do |f| %>
-	  <%= f.error_messages %>
+		<% form_for(@buddy) do |f| %>
+		  <%= f.error_messages %>
 
-	  <p>
-	    <%= f.label :buddy_group_id %><br />
-	    <%= collection_select(:buddy, :buddy_group_id, @user.buddy_groups, "id", "name") %>
-	  </p>
-	  <p>
-	    <%= f.submit 'Update' %>
-			<%= link_to 'Cancel', buddies_path %>
-	  </p>
-	<% end %>
+		  <p>
+		    <%= f.label :buddy_group_id %><br />
+		    <%= collection_select(:buddy, :buddy_group_id, @user.buddy_groups, "id", "name") %>
+		  </p>
+		  <p>
+		    <%= f.submit 'Update' %>
+				<%= link_to 'Cancel', buddies_path, :style => "float:right;margin-top:7px;" %>
+		  </p>
+		<% end %>
+	</div>
 </div>

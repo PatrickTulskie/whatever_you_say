@@ -42,7 +42,27 @@ table tbody tr:hover{
 	background: lightblue;
 }
 
+div.edit_panel {
+	padding: 10px;
+	font-size: 1.5em;
+	text-align: center;
+}
+
+div.edit_panel input, div.edit_panel select, div.edit_panel label {
+	margin: 5px;
+}
+
 #buddies_panel{
+	padding: 10px;
+}
+
+div.center_me {
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	text-align: left;
+	border: dashed 1px;
 	padding: 10px;
 }
 
