@@ -14,11 +14,15 @@ class WusAnalytics
   
   def users_who_speak_same_language
     language = @user.language
-    language.users
+    language ? language.users : []
   end
   
   def users_who_speak_other_languages
-    users = User.all - @user.language.users
+    if @user.language
+      users = User.all - @user.language.users
+    else
+      []
+    end
   end
   
   def most_common_language

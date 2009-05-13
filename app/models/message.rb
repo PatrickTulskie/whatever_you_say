@@ -10,8 +10,12 @@ class Message < ActiveRecord::Base
   after_create :reopen_chat
   
   def translate(destination_language)
-    w = WusTranslate.new
-    w.translate_text(self.body, destination_language.to_sym, self.language.short_name.to_sym)
+    if destination_language != self.language.short_name
+      w = WusTranslate.new
+      w.translate_text(self.body, destination_language.to_sym, self.language.short_name.to_sym)
+    else
+      self.body
+    end
   end
   
   def reopen_chat
