@@ -90,7 +90,7 @@ required_rubygems_version: !ruby/object:Gem::Requirement
 requirements: []
 
 rubyforge_project: tranexp
-rubygems_version: 1.3.2
+rubygems_version: 1.3.3
 signing_key: 
 specification_version: 2
 summary: Uses tranexp.com to perform translations between languages
