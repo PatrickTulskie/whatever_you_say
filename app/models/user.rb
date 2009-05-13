@@ -97,8 +97,13 @@ class User < ActiveRecord::Base
   end
   
   def create_profile
-    self.profile = Profile.new
-    self.profile.save
+    lang = Language.find_by_short_name('en') || Language.first
+    if lang
+      self.profile = Profile.create({:language_id => lang.id })
+    else
+      self.profile = Profile.new
+      self.profile.save
+    end
   end
     
 end
